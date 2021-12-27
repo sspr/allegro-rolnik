@@ -1,35 +1,22 @@
 export type Theme = {
-  fonts: { import: string; names: { text: string; headers: string } };
-  fontSizes: {
-    main: string;
+  fontSize: {
+    primary: string;
     secondary: string;
     header: string;
-    secondaryHeader: string;
-    price: string;
-    priceEnding: string;
+    subheader: string;
   };
-  colors: {
+  color: {
+    primary: string;
+    primaryLight: string;
+    secondary: string;
+    secondaryLight: string;
     text: {
-      main: string;
-      secondary: string;
-    };
-    accent: {
-      main: string;
-      mainHovered: string;
-      secondary: string;
-      secondaryHovered: string;
+      black: string;
+      grey: string;
     };
     border: {
-      main: string;
-      secondary: string;
-    };
-  };
-  dimensions: {
-    siteWIdth: string;
-    paddings: {
-      big: string;
-      medium: string;
-      small: string;
+      grey: string;
+      lightgrey: string;
     };
   };
 };

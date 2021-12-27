@@ -2,42 +2,38 @@ import { createGlobalStyle } from 'styled-components';
 import { Theme } from './theme.types';
 
 export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
-    ${({ theme }) => theme.fonts.import};
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap');
 
-    body{
-        font-family: ${({ theme }) => theme.fonts.names.text};
-        color: ${({ theme }) => theme.colors.text.main};
-        font-size:${({ theme }) => theme.fontSizes.main}; 
-    }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: ${({ theme }) => theme.color.text.black};
+    font-size: ${({ theme }) => theme.fontSize.primary};
+  }
 
-    a{
-        color: ${({ theme }) => theme.colors.text.main};
-    }
+  a {
+    color: ${({ theme }) => theme.color.text.black};
+  }
 
-    a, a:hover{
-        text-decoration: none;
-    }
+  a,
+  a:hover {
+    text-decoration: none;
+  }
 
-    a:hover{
-        color: ${({ theme }) => theme.colors.accent.secondaryHovered};
-    }
+  a:hover {
+    color: ${({ theme }) => theme.color.secondaryLight};
+  }
 
-    h2{
-        font-size:${({ theme }) => theme.fontSizes.header};
-    }
+  h2 {
+    font-size: ${({ theme }) => theme.fontSize.header};
+  }
 
-    h3{
-        font-size:${({ theme }) => theme.fontSizes.secondaryHeader};
-        padding-top: ${({ theme }) => theme.dimensions.paddings.small};
-    }
+  h3 {
+    font-size: ${({ theme }) => theme.fontSize.subheader};
+  }
 
-    h2, h3 {
-        font-family: ${({ theme }) => theme.fonts.names.headers};
-        font-weight: 500;
-        margin-bottom: ${({ theme }) => theme.dimensions.paddings.medium};
-    }
-
-    .active{
-        color: ${({ theme }) => theme.colors.accent.main};
-    }
+  h2,
+  h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
 `;

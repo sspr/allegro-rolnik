@@ -1,43 +1,24 @@
 import { Theme } from './theme.types';
 
 export const theme: Theme = {
-  fonts: {
-    import: "@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap')",
-    names: {
-      text: "'Open Sans', sans-serif",
-      headers: "'Roboto', sans-serif",
-    },
-  },
-  fontSizes: {
-    main: '14px',
+  fontSize: {
+    primary: '14px',
     secondary: '13px',
     header: '25px',
-    secondaryHeader: '16px',
-    price: '30px',
-    priceEnding: '21px',
+    subheader: '16px',
   },
-  colors: {
+  color: {
+    primary: '#ff5a00',
+    primaryLight: '#ff7b33',
+    secondary: '#00a790',
+    secondaryLight: '#54cab6',
     text: {
-      main: '#222',
-      secondary: '#767676',
-    },
-    accent: {
-      main: '#ff5a00',
-      mainHovered: '#ff7b33',
-      secondary: '#00a790',
-      secondaryHovered: '#54cab6',
+      black: '#222',
+      grey: '#767676',
     },
     border: {
-      main: '#ddd',
-      secondary: '#aaa',
-    },
-  },
-  dimensions: {
-    siteWIdth: '1200px',
-    paddings: {
-      big: '24px',
-      medium: '16px',
-      small: '8px',
+      grey: '#ddd',
+      lightgrey: '#aaa',
     },
   },
 };
