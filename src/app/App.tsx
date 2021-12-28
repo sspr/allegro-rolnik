@@ -1,10 +1,13 @@
+import { useIntl } from 'react-intl';
+
 export const App = () => {
+  const intl = useIntl();
+
   return (
     <>
       <h2>This is a header 2</h2>
       <h3>This is a header 3</h3>
-      <p>This is a paragraph</p>
-      <a href="#">This is a link</a>
+      <p>This is translated statement: {intl.formatMessage({ id: 'test.helloWorld' })}</p>
     </>
   );
 };
