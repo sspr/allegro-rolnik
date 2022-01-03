@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { translations } from '../../../i18n/messages';
 import { defaultLocale } from '../defaultLocale';
-import { localeContext } from '../localeContext/localeContetx';
+import { localeContext } from '../localeContext/localeContext';
 import { LocaleContextControllerProps } from './LocaleContextController.types';
 
 export const LocaleContextController = ({ children }: LocaleContextControllerProps) => {
