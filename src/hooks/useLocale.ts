@@ -7,7 +7,9 @@ export const useLocale = (): IntlShape & LocaleContextValuesTypes => {
   const intl = useIntl();
   const context = useContext(LocaleContext);
 
-  if (context === undefined) throw new Error('Something went wrong');
+  if (context === undefined) {
+    throw new Error('useLocale must be used withing LocaleContextController');
+  }
 
   return {
     ...intl,
