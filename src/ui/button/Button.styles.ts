@@ -5,7 +5,7 @@ export const Button = styled.button<{ theme: Theme }>`
   height: 40px;
   padding: 0 13px;
   background: ${({ theme }) => theme.color.primary};
-  color: #fff;
+  color: ${({ theme }) => theme.color.text.white};
   font-family: 'Open Sans', sans-serif;
   font-size: ${({ theme }) => theme.fontSize.primary};
   font-weight: 500;

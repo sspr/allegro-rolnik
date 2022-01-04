@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Theme } from '../../../assets/styles/theme.types';
+import { Theme } from 'assets/styles/theme.types';
 
 export const LocaleButton = styled.button<{ theme: Theme }>`
   font-size: ${({ theme }) => theme.fontSize.primary};
