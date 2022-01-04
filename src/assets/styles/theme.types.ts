@@ -18,5 +18,6 @@ export type Theme = {
       grey: string;
       lightgrey: string;
     };
+    background: string;
   };
 };

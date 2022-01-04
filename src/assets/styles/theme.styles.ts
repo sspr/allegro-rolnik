@@ -20,5 +20,6 @@ export const theme: Theme = {
       grey: '#ddd',
       lightgrey: '#aaa',
     },
+    background: '#edeff1',
   },
 };
