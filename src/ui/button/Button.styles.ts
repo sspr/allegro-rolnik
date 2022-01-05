@@ -1,20 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Theme } from '../../assets/styles/theme.types';
 
 export const Button = styled.button<{ theme: Theme }>`
-  height: 40px;
-  padding: 0 13px;
-  background: ${({ theme }) => theme.color.primary};
-  color: ${({ theme }) => theme.color.text.white};
-  font-family: 'Open Sans', sans-serif;
-  font-size: ${({ theme }) => theme.fontSize.primary};
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: none;
+  ${({ theme: { color, fontSize } }) => css`
+    height: 40px;
+    padding: 0 13px;
+    background: ${color.primary};
+    color: ${color.text.white};
+    font-family: 'Open Sans', sans-serif;
+    font-size: ${fontSize.primary};
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.color.primaryLight};
-    cursor: pointer;
-  }
+    &:hover {
+      background-color: ${color.primaryLight};
+      cursor: pointer;
+    }
+  `}
 `;

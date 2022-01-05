@@ -8,7 +8,14 @@ import { useLocale } from 'hooks';
 
 export const Header = () => {
   const appLocaleValues = Object.values<AppLocale>(AppLocale);
-  const { formatMessage } = useLocale();
+  const { formatMessage, locale, setLocale } = useLocale();
+
+  const handleChangeLanguage = (event: React.MouseEvent): void => {
+    const target = event.target as HTMLElement;
+    if (target.textContent !== null && target.textContent in AppLocale && locale !== target.textContent) {
+      setLocale(target.textContent as AppLocale);
+    }
+  };
 
   return (
     <Styled.HeaderWrapper>
@@ -21,7 +28,7 @@ export const Header = () => {
           <Input placeholder={formatMessage({ id: 'header.searchInputPlaceholder' })} />
           <Button type="submit">{formatMessage({ id: 'header.searchButtonText' })}</Button>
         </Styled.Form>
-        <div>
+        <div onClick={handleChangeLanguage}>
           {appLocaleValues.map((localeValue, index) => (
             <LocaleButton key={localeValue} text={localeValue} hasBorder={index < appLocaleValues.length - 1} />
           ))}
