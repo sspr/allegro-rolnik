@@ -1,7 +1,7 @@
 import * as Styled from './Sidebar.styles';
 import { SidebarProps } from './Sidebar.types';
 
-export const Sidebar = ({ screenIsMobile, mobileFiltersVisable, handleMobileFiltersToggle }: SidebarProps) => {
+export const Sidebar = ({ screenIsMobile, handleMobileFiltersToggle }: SidebarProps) => {
   return (
     <Styled.Sidebar>
       {screenIsMobile ? (

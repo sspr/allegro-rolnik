@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCheckMobileScreen } from '../hooks/useCheckMobileScreen';
+import { useCheckMobileScreen } from 'hooks';
 import * as Styled from './App.styles';
 import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';

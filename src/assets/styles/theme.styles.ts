@@ -20,6 +20,13 @@ export const theme: Theme = {
       grey: '#ddd',
       lightgrey: '#aaa',
     },
-    background: '#edeff1',
+    background: {
+      grey: '#edeff1',
+      white: '#fff',
+    },
+  },
+  width: {
+    small: '991px',
+    mobile: '786px',
   },
 };

@@ -18,6 +18,13 @@ export type Theme = {
       grey: string;
       lightgrey: string;
     };
-    background: string;
+    background: {
+      grey: string;
+      white: string;
+    };
+  };
+  width: {
+    small: string;
+    mobile: string;
   };
 };
