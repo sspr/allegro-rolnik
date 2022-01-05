@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../assets/styles/theme.types';
 
-export const Input = styled.input<{ theme: Theme }>`
+export const Input = styled.input`
   ${({ theme: { color, fontSize } }) => css`
     width: 290px;
     height: 40px;

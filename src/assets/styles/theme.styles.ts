@@ -22,7 +22,7 @@ export const theme: Theme = {
       lightgrey: '#aaa',
     },
   },
-  width: {
+  screenResolution: {
     mobile: '786px',
   },
 };

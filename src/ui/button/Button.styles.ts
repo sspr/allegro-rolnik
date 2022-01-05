@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../assets/styles/theme.types';
 
-export const Button = styled.button<{ theme: Theme }>`
+export const Button = styled.button`
   ${({ theme: { color, fontSize } }) => css`
     height: 40px;
     padding: 0 13px;

@@ -20,7 +20,7 @@ export type Theme = {
       lightgrey: string;
     };
   };
-  width: {
+  screenResolution: {
     mobile: string;
   };
 };
