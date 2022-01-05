@@ -1,5 +1,5 @@
 import { AppLocale } from 'context/locale/appLocale.enum';
-import { useLocale } from 'hooks';
+import { useLocale, useProducts } from 'hooks';
 
 export const App = () => {
   const { formatMessage, locale, setLocale } = useLocale();
@@ -7,6 +7,8 @@ export const App = () => {
   const handleChangeLanguage = () => {
     setLocale(locale === AppLocale.pl ? AppLocale.en : AppLocale.pl);
   };
+
+  const data = useProducts();
 
   return (
     <>
