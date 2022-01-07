@@ -1,5 +1,6 @@
 import { AppLocale } from 'context/locale/appLocale.enum';
 import { useLocale } from 'hooks';
+import { SingleProduct } from './components/product/SingleProduct';
 
 export const App = () => {
   const { formatMessage, locale, setLocale } = useLocale();
@@ -14,6 +15,8 @@ export const App = () => {
       <h3>This is a header 3</h3>
       <p>This is translated statement: {formatMessage({ id: 'test.helloWorld' })}</p>
       <button onClick={handleChangeLanguage}>Change language</button>
+      <br />
+      <SingleProduct />
     </>
   );
 };

@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { Theme } from './theme.types';
 
 export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap');
-
   body {
     font-family: 'Open Sans', sans-serif;
     color: ${({ theme }) => theme.color.text.black};
