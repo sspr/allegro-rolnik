@@ -23,8 +23,8 @@ export type Theme = {
       white: string;
     };
   };
-  width: {
+  screenResolution: {
+    medium: string;
     small: string;
-    mobile: string;
   };
 };

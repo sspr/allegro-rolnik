@@ -25,8 +25,8 @@ export const theme: Theme = {
       white: '#fff',
     },
   },
-  width: {
-    small: '991px',
-    mobile: '786px',
+  screenResolution: {
+    medium: '991px',
+    small: '786px',
   },
 };

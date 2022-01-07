@@ -1,2 +1,2 @@
 export * from './useLocale';
-export * from './useCheckMobileScreen';
+export * from './useIsMobileScreen';
