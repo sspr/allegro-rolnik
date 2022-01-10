@@ -15,10 +15,14 @@ export const theme: Theme = {
     text: {
       black: '#222',
       grey: '#767676',
+      white: '#fff',
     },
     border: {
       grey: '#ddd',
       lightgrey: '#aaa',
     },
+  },
+  screenResolution: {
+    mobile: '786px',
   },
 };

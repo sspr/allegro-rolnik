@@ -1,3 +1,6 @@
 {
-  "test.helloWorld": "Witaj świecie"
+  "header.logoAlt": "Allegro rolnik - wygodne i bezpieczne zakupy online dla rolników",
+  "header.logoText": "rolnik",
+  "header.searchInputPlaceholder": "czego szukasz?",
+  "header.searchButtonText": "szukaj"
 }

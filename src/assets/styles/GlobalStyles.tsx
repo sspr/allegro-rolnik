@@ -1,17 +1,17 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { Theme } from './theme.types';
 
-export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
+export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`${({ theme: { color, fontSize } }) => css`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap');
 
   body {
     font-family: 'Open Sans', sans-serif;
-    color: ${({ theme }) => theme.color.text.black};
-    font-size: ${({ theme }) => theme.fontSize.primary};
+    color: ${color.text.black};
+    font-size: ${fontSize.primary};
   }
 
   a {
-    color: ${({ theme }) => theme.color.text.black};
+    color: ${color.text.black};
   }
 
   a,
@@ -20,15 +20,15 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
   }
 
   a:hover {
-    color: ${({ theme }) => theme.color.secondaryLight};
+    color: ${color.secondaryLight};
   }
 
   h2 {
-    font-size: ${({ theme }) => theme.fontSize.header};
+    font-size: ${fontSize.header};
   }
 
   h3 {
-    font-size: ${({ theme }) => theme.fontSize.subheader};
+    font-size: ${fontSize.subheader};
   }
 
   h2,
@@ -36,4 +36,5 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
   }
+`}
 `;

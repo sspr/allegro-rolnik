@@ -13,10 +13,14 @@ export type Theme = {
     text: {
       black: string;
       grey: string;
+      white: string;
     };
     border: {
       grey: string;
       lightgrey: string;
     };
+  };
+  screenResolution: {
+    mobile: string;
   };
 };
