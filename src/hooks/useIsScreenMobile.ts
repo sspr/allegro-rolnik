@@ -1,7 +1,7 @@
 import { theme } from 'assets/styles/theme.styles';
 import { useEffect, useState } from 'react';
 
-export const useIsMobileScreen = (): boolean => {
+export const useIsScreenMobile = (): boolean => {
   const [width, setWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
