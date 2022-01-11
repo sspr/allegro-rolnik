@@ -14,14 +14,19 @@ export type Theme = {
       black: string;
       grey: string;
       darkgrey: string;
+      white: string;
     };
     border: {
       grey: string;
       lightgrey: string;
     };
-    background: string;
+    background: {
+      grey: string;
+      white: string;
+    };
   };
   screenResolution: {
     medium: string;
+    small: string;
   };
 };

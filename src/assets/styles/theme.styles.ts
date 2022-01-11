@@ -16,14 +16,19 @@ export const theme: Theme = {
       black: '#222',
       grey: '#767676',
       darkgrey: '#3a4e58',
+      white: '#fff',
     },
     border: {
-      grey: '#ddd',
-      lightgrey: '#aaa',
+      grey: '#aaa',
+      lightgrey: '#ddd',
     },
-    background: '#eee',
+    background: {
+      grey: '#edeff1',
+      white: '#fff',
+    },
   },
   screenResolution: {
     medium: '991px',
+    small: '786px',
   },
 };
