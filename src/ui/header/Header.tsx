@@ -8,7 +8,7 @@ import { useLocale } from 'hooks';
 
 export const Header = () => {
   const appLocaleValues = Object.values<AppLocale>(AppLocale);
-  const { formatMessage, setLocale } = useLocale();
+  const { formatMessage, setLocale, locale } = useLocale();
 
   return (
     <Styled.HeaderWrapper>
@@ -26,11 +26,12 @@ export const Header = () => {
             <span key={localeValue}>
               <LocaleButton
                 text={localeValue}
+                isActive={localeValue === locale}
                 onClick={() => {
                   setLocale(localeValue);
                 }}
               />
-              {index < localeValue.length - 1 ? ' | ' : null}
+              {index < localeValue.length - 1 && ' | '}
             </span>
           ))}
         </div>

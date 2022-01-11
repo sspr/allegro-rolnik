@@ -18,9 +18,9 @@ export const App = () => {
       <Header />
       <Styled.Wrapper>
         <Styled.Content>
-          {!isScreenMobile || isMobileFiltersVisable ? (
+          {(!isScreenMobile || isMobileFiltersVisable) && (
             <Sidebar isScreenMobile={isScreenMobile} onFiltersClose={toggleFilters} />
-          ) : null}
+          )}
           <Main isScreenMobile={isScreenMobile} onFilterClick={toggleFilters} />
         </Styled.Content>
       </Styled.Wrapper>

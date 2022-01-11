@@ -18,8 +18,8 @@ export const theme: Theme = {
       white: '#fff',
     },
     border: {
-      grey: '#ddd',
-      lightgrey: '#aaa',
+      grey: '#aaa',
+      lightgrey: '#ddd',
     },
     background: {
       grey: '#edeff1',
