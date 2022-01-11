@@ -1,4 +1,4 @@
-export const DUMMY_DATA = [
+export const PRODUCTS_MOCK = [
   {
     id: '10027784131',
     name: 'Ciągnik Farmtrac 675 DTn farmtrak farmtrack',

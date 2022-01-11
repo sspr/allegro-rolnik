@@ -1,4 +1,4 @@
-export type SingleProductProps = {
+export type ProductItemProps = {
   productDetails: {
     id: string;
     name: string;

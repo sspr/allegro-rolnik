@@ -1,10 +1,10 @@
-import { SingleProduct } from '../singleProduct/SingleProduct';
-import { DUMMY_DATA } from './dummyData';
+import { SingleProduct } from '../productItem/ProductItem';
+import { PRODUCTS_MOCK } from './mock';
 import * as Styled from './ProductsList.style';
 
 export const ProductsList = () => (
   <Styled.ProductsList>
-    {DUMMY_DATA.map((product) => (
+    {PRODUCTS_MOCK.map((product) => (
       <SingleProduct key={product.id} productDetails={product} />
     ))}
   </Styled.ProductsList>

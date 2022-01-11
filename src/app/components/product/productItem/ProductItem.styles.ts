@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const SingleProduct = styled.article`
-  border-bottom: 1px solid ${({ theme }) => theme.color.border.grey};
+export const ProductItem = styled.article`
+  border-bottom: 1px solid ${({ theme }) => theme.color.border.lightgrey};
 `;
 
 export const Container = styled.div`
@@ -51,7 +51,7 @@ export const ConditionText = styled.span`
   font-size: ${({ theme }) => theme.fontSize.secondary};
 `;
 
-export const PriceIntiger = styled.span`
+export const PriceInteger = styled.span`
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 700;
