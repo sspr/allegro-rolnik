@@ -21,8 +21,13 @@ export const theme: Theme = {
       grey: '#ddd',
       lightgrey: '#aaa',
     },
+    background: {
+      grey: '#edeff1',
+      white: '#fff',
+    },
   },
   screenResolution: {
-    mobile: '786px',
+    medium: '991px',
+    small: '786px',
   },
 };

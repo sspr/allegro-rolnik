@@ -19,8 +19,13 @@ export type Theme = {
       grey: string;
       lightgrey: string;
     };
+    background: {
+      grey: string;
+      white: string;
+    };
   };
   screenResolution: {
-    mobile: string;
+    medium: string;
+    small: string;
   };
 };
