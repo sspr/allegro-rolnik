@@ -1,3 +1,4 @@
 {
-  "test.helloWorld": "Hello world"
+  "test.helloWorld": "Hello world",
+  "main.filterSwitch": "filters and categories"
 }
