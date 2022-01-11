@@ -27,7 +27,7 @@ export const Sidebar = styled.div`
 
 export const FiltersCardCloser = styled.div`
   ${({ theme: { color } }) => css`
-    color: ${color.text.primary};
+    color: ${color.text.black};
     font-size: 20px;
     line-height: 20px;
     padding: 16px;
