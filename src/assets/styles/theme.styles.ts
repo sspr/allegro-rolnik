@@ -15,6 +15,7 @@ export const theme: Theme = {
     text: {
       black: '#222',
       grey: '#767676',
+      darkgrey: '#3a4e58',
       white: '#fff',
     },
     border: {

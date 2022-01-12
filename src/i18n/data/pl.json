@@ -3,5 +3,6 @@
   "header.logoText": "rolnik",
   "header.searchInputPlaceholder": "czego szukasz?",
   "header.searchButtonText": "szukaj",
-  "main.filterSwitch": "filtry i kategorie"
+  "main.filterSwitch": "filtry i kategorie",
+  "singleProduct.condition": "stan"
 }

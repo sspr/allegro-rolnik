@@ -3,5 +3,6 @@
   "header.logoText": "farmer",
   "header.searchInputPlaceholder": "what are you looking for?",
   "header.searchButtonText": "search",
-  "main.filterSwitch": "filters and categories"
+  "main.filterSwitch": "filters and categories",
+  "singleProduct.condition": "condition"
 }
