@@ -1,6 +1,6 @@
 import { useLocale } from 'hooks';
 import * as Styled from './ProductItem.styles';
-import { ProductItemProps } from 'api/product/product.types';
+import { ProductItemProps } from './ProductItem.types';
 import { AppLocale } from 'context/locale/appLocale.enum';
 
 export const SingleProduct = ({ productDetails }: ProductItemProps) => {

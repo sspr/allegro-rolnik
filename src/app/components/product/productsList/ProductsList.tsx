@@ -1,5 +1,5 @@
 import { SingleProduct } from '../productItem/ProductItem';
-import { PRODUCTS_MOCK } from './mock';
+import { PRODUCTS_MOCK } from './productsMock';
 import * as Styled from './ProductsList.style';
 
 export const ProductsList = () => (
