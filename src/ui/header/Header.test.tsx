@@ -1,70 +1,36 @@
-import { render, screen } from '@testing-library/react';
+import { render } from 'tests';
 import { Header } from './Header';
-import { AppProviders } from 'providers/AppProviders';
-import { defaultLocale } from 'context/locale/defaultLocale';
 import { AppLocale } from 'context/locale/appLocale.enum';
 import { translations } from 'i18n/messages';
 
 describe('Header component', () => {
-  it('renders language switch', () => {
-    render(
-      <AppProviders>
-        <Header />
-      </AppProviders>,
-    );
+  it('renders language buttons correctly', () => {
+    const { getByText } = render(<Header />);
 
-    const localeButtonEn = screen.getByText(AppLocale.en);
-    const localeButtonPl = screen.getByText(AppLocale.pl);
-
-    expect(localeButtonEn).toBeInTheDocument();
-    expect(localeButtonPl).toBeInTheDocument();
+    expect(getByText(AppLocale.en)).toBeInTheDocument();
+    expect(getByText(AppLocale.pl)).toBeInTheDocument();
   });
 
-  it('has default active localeButton that is bold', () => {
-    render(
-      <AppProviders>
-        <Header />
-      </AppProviders>,
-    );
+  it('has default active language button that is bold', () => {
+    const { getByText } = render(<Header />);
 
-    const localeButtonActive = screen.queryByText(defaultLocale);
-
-    expect(localeButtonActive).toHaveClass('active');
-    expect(localeButtonActive).toHaveStyle('font-weight: 600');
+    expect(getByText(AppLocale.en)).toHaveClass('active');
+    expect(getByText(AppLocale.en)).toHaveStyle('font-weight: 600');
   });
 
-  it('has inactive localeButton that is not bold', () => {
-    render(
-      <AppProviders>
-        <Header />
-      </AppProviders>,
-    );
+  it('has inactive language button that is not bold', () => {
+    const { getByText } = render(<Header />);
 
-    const localeButtonNotActive = screen.getByText(defaultLocale === AppLocale.en ? AppLocale.pl : AppLocale.en);
-
-    expect(localeButtonNotActive).toHaveClass('not-active');
-    expect(localeButtonNotActive).not.toHaveStyle('font-weight: 600');
+    expect(getByText(AppLocale.pl)).toHaveClass('not-active');
+    expect(getByText(AppLocale.pl)).not.toHaveStyle('font-weight: 600');
   });
 
-  it('changes language when localeButton that is not actvie is clicked', () => {
-    render(
-      <AppProviders>
-        <Header />
-      </AppProviders>,
-    );
+  it('changes language when language button, that is not actvie, is clicked', () => {
+    const { getByText, getAllByRole } = render(<Header />);
 
-    const localeButtonNotActive = screen.getByText(defaultLocale === AppLocale.en ? AppLocale.pl : AppLocale.en);
+    getByText(AppLocale.pl).click();
 
-    localeButtonNotActive.click();
-
-    const clickedLocaleButton = screen.getByText(defaultLocale === AppLocale.en ? AppLocale.pl : AppLocale.en);
-    const searchButton = screen.getAllByRole('button')[0];
-
-    expect(clickedLocaleButton).toHaveClass('active');
-    expect(searchButton).toHaveTextContent(
-      defaultLocale === AppLocale.en
-        ? translations[AppLocale.pl]['header.searchButtonText']
-        : translations[AppLocale.en]['header.searchButtonText'],
-    );
+    expect(getByText(AppLocale.pl)).toHaveClass('active');
+    expect(getAllByRole('button')[0]).toHaveTextContent(translations[AppLocale.pl]['header.searchButtonText']);
   });
 });

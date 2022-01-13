@@ -1,58 +1,45 @@
-import { render, screen, within } from '@testing-library/react';
-import { AppLocale } from 'context/locale/appLocale.enum';
-import { AppProviders } from 'providers/AppProviders';
+import { render } from 'tests';
+import { within } from '@testing-library/react';
 import { Header } from 'ui/header/Header';
-import { PRODUCTS_MOCK } from '../productsList/productsMock';
+import { AppLocale } from 'context/locale/appLocale.enum';
 import { ProductItem } from './ProductItem';
+import { PRODUCTS_MOCK } from 'tests/mock/productsMock';
 
 describe('ProductItem component', () => {
   it('renders name of product', () => {
-    render(
-      <AppProviders>
-        <ProductItem productDetails={PRODUCTS_MOCK[0]} />
-      </AppProviders>,
-    );
+    const { getByText } = render(<ProductItem productDetails={PRODUCTS_MOCK[0]} />);
 
-    const productName = screen.getByText(PRODUCTS_MOCK[0].name);
-
-    expect(productName).toBeInTheDocument();
+    expect(getByText(PRODUCTS_MOCK[0].name)).toBeInTheDocument();
   });
 
   it('renders price correctly in English', () => {
-    render(
-      <AppProviders>
+    const { getByTestId } = render(
+      <>
         <Header />
         <ProductItem productDetails={PRODUCTS_MOCK[0]} />
-      </AppProviders>,
+      </>,
     );
 
-    const localeButtonEn = screen.getByText(AppLocale.en);
-    localeButtonEn.click();
-    const priceElement = screen.getByTestId('price');
-    const currencyEn = within(priceElement).getByText(/PLN/);
-    const dot = within(priceElement).getByText(/\./);
-    const priceDecimal = within(priceElement).getByText(/^\d{2}$/);
+    const priceElement = getByTestId('price');
 
-    expect(currencyEn).toBeInTheDocument();
-    expect(dot).toBeInTheDocument();
-    expect(priceDecimal).toBeInTheDocument();
+    expect(within(priceElement).getByText(/PLN/)).toBeInTheDocument();
+    expect(within(priceElement).getByText(/\./)).toBeInTheDocument();
+    expect(within(priceElement).getByText(/^\d{2}$/)).toBeInTheDocument();
   });
 
   it('renders price correctly in Polish', () => {
-    render(
-      <AppProviders>
+    const { getByText, getByTestId } = render(
+      <>
         <Header />
         <ProductItem productDetails={PRODUCTS_MOCK[0]} />
-      </AppProviders>,
+      </>,
     );
 
-    const localeButtonPl = screen.getByText(AppLocale.pl);
-    localeButtonPl.click();
-    const priceElement = screen.getByTestId('price');
-    const priceDecimalWithCurrencyPl = within(priceElement).getByText(/^\d{2} zł$/);
-    const comma = within(priceElement).getByText(/,/);
+    getByText(AppLocale.pl).click();
 
-    expect(priceDecimalWithCurrencyPl).toBeInTheDocument();
-    expect(comma).toBeInTheDocument();
+    const priceElement = getByTestId('price');
+
+    expect(within(priceElement).getByText(/^\d{2} zł$/)).toBeInTheDocument();
+    expect(within(priceElement).getByText(/,/)).toBeInTheDocument();
   });
 });
