@@ -1,10 +1,10 @@
 import { SingleProduct } from '../productItem/ProductItem';
-import { PRODUCTS_MOCK } from './productsMock';
 import * as Styled from './ProductsList.style';
+import { ProductsListProps } from './ProductsList.types';
 
-export const ProductsList = () => (
+export const ProductsList = ({ productsList }: ProductsListProps) => (
   <Styled.ProductsList>
-    {PRODUCTS_MOCK.map((product) => (
+    {productsList.map((product) => (
       <SingleProduct key={product.id} productDetails={product} />
     ))}
   </Styled.ProductsList>
