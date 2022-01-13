@@ -20,7 +20,7 @@ describe('Header component', () => {
     expect(localeButtonPl).toBeInTheDocument();
   });
 
-  it('has default language button that is bold', () => {
+  it('has default active localeButton that is bold', () => {
     render(
       <AppProviders>
         <Header />
@@ -33,7 +33,7 @@ describe('Header component', () => {
     expect(localeButtonActive).toHaveStyle('font-weight: 600');
   });
 
-  it('has language bautton that is not bold', () => {
+  it('has inactive localeButton that is not bold', () => {
     render(
       <AppProviders>
         <Header />
@@ -46,7 +46,7 @@ describe('Header component', () => {
     expect(localeButtonNotActive).not.toHaveStyle('font-weight: 600');
   });
 
-  it('changes locale when locale button that is not actvie is clicked', () => {
+  it('changes language when localeButton that is not actvie is clicked', () => {
     render(
       <AppProviders>
         <Header />
