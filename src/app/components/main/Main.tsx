@@ -1,4 +1,5 @@
 import { useLocale } from 'hooks';
+import { ProductsList } from '../product/productsList/ProductsList';
 import * as Styled from './Main.styles';
 import { MainProps } from './Main.types';
 
@@ -12,7 +13,7 @@ export const Main = ({ isScreenMobile, onFilterClick }: MainProps) => {
           {formatMessage({ id: 'main.filterSwitch' })}
         </Styled.FiltersSwitch>
       )}
-      Main
+      <ProductsList />
     </Styled.Main>
   );
 };

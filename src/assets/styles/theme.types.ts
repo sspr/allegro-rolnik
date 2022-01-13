@@ -13,6 +13,7 @@ export type Theme = {
     text: {
       black: string;
       grey: string;
+      darkgrey: string;
       white: string;
     };
     border: {
