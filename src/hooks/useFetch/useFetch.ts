@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
-import { FetchReturnedValue } from './useFetch.types';
+import { FetchResult } from './useFetch.types';
 
-export const useFetch = <Type>(url: string): FetchReturnedValue<Type> => {
+export const useFetch = <TResponse>(url: string | undefined): FetchResult<TResponse> => {
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState<Type | undefined>(undefined);
+  const [data, setData] = useState<TResponse | undefined>(undefined);
   const isLoading = !data && !isError;
 
   useEffect(() => {
     const getData = async () => {
       try {
+        if (!url) {
+          throw new Error('Url is undefined');
+        }
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Something went wrong');
@@ -21,6 +24,11 @@ export const useFetch = <Type>(url: string): FetchReturnedValue<Type> => {
     };
 
     getData();
+
+    return () => {
+      setData(undefined);
+      setIsError(false);
+    };
   }, [url]);
 
   return { isLoading, isError, data };
