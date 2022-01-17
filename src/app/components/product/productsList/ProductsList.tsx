@@ -3,12 +3,12 @@ import { SingleProduct } from '../productItem/ProductItem';
 import * as Styled from './ProductsList.style';
 import { ProductsListProps } from './ProductsList.types';
 
-export const ProductsList = ({ productsList, isProductsLoading, isError }: ProductsListProps) => {
+export const ProductsList = ({ productsList, isLoading, isError }: ProductsListProps) => {
   const { formatMessage } = useIntl();
 
   return (
     <>
-      {isProductsLoading && <Styled.Message>{formatMessage({ id: 'productsList.loadingData' })}</Styled.Message>}
+      {isLoading && <Styled.Spinner></Styled.Spinner>}
       {productsList && !isError && (
         <Styled.ProductsList>
           {productsList.map((product) => (
