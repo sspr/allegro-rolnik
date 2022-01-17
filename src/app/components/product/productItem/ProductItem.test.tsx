@@ -1,6 +1,4 @@
-import { render } from 'tests';
-import { within } from '@testing-library/react';
-import { Header } from 'ui/header/Header';
+import { render, within } from 'tests';
 import { AppLocale } from 'context/locale/appLocale.enum';
 import { ProductItem } from './ProductItem';
 import { PRODUCTS_MOCK } from 'tests/mock/productsMock';
@@ -13,12 +11,7 @@ describe('ProductItem component', () => {
   });
 
   it('renders price correctly in English', () => {
-    const { getByTestId } = render(
-      <>
-        <Header />
-        <ProductItem productDetails={PRODUCTS_MOCK[0]} />
-      </>,
-    );
+    const { getByTestId } = render(<ProductItem productDetails={PRODUCTS_MOCK[0]} />);
 
     const priceElement = getByTestId('price');
 
@@ -28,14 +21,9 @@ describe('ProductItem component', () => {
   });
 
   it('renders price correctly in Polish', () => {
-    const { getByText, getByTestId } = render(
-      <>
-        <Header />
-        <ProductItem productDetails={PRODUCTS_MOCK[0]} />
-      </>,
-    );
-
-    getByText(AppLocale.pl).click();
+    const { getByText, getByTestId } = render(<ProductItem productDetails={PRODUCTS_MOCK[0]} />, {
+      locale: AppLocale.pl,
+    });
 
     const priceElement = getByTestId('price');
 

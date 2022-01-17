@@ -8,23 +8,27 @@ import { AppLocale } from 'context/locale/appLocale.enum';
 import { translations } from 'i18n/messages';
 import { LocaleContext } from 'context/locale/localeContext/LocaleContext';
 import { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import { queries, Queries, render, RenderOptions } from '@testing-library/react';
 
-const Wrapper = ({ children }: AppProvidersProps) => {
-  const [locale, setLocale] = useState(AppLocale.en);
-
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <IntlProvider defaultLocale={AppLocale.en} key={locale} locale={locale} messages={translations[locale]}>
-        <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>
-      </IntlProvider>
-    </ThemeProvider>
-  );
+type CustomRenderOptions<Q extends Queries = typeof queries> = RenderOptions<Q> & {
+  locale?: AppLocale;
 };
 
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
-  render(ui, { wrapper: Wrapper, ...options });
+const customRender = (ui: ReactElement, options?: Omit<CustomRenderOptions, 'wrapper'>) => {
+  const Wrapper = ({ children }: AppProvidersProps) => {
+    const [locale, setLocale] = useState(options?.locale ?? AppLocale.en);
+
+    return (
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <IntlProvider defaultLocale={AppLocale.en} key={locale} locale={locale} messages={translations[locale]}>
+          <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>
+        </IntlProvider>
+      </ThemeProvider>
+    );
+  };
+  return render(ui, { wrapper: Wrapper, ...options });
+};
 
 export * from '@testing-library/react';
 
