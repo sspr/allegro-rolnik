@@ -8,7 +8,7 @@ export const ProductsList = ({ productsList, isLoading, isError }: ProductsListP
 
   return (
     <>
-      {isLoading && <Styled.Spinner></Styled.Spinner>}
+      {isLoading && <Styled.Spinner />}
       {productsList && !isError && (
         <Styled.ProductsList>
           {productsList.map((product) => (
