@@ -4,5 +4,7 @@
   "header.searchInputPlaceholder": "what are you looking for?",
   "header.searchButtonText": "search",
   "main.filterSwitch": "filters and categories",
+  "productsList.loadingData": "Loading products...",
+  "productsList.errorMessage": "Something went wrong. Please try agin later.",
   "singleProduct.condition": "condition"
 }
