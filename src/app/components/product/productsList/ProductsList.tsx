@@ -1,4 +1,3 @@
-import { ProductItem } from '../productItem/ProductItem';
 import { useIntl } from 'react-intl';
 import { SingleProduct } from '../productItem/ProductItem';
 import * as Styled from './ProductsList.style';
