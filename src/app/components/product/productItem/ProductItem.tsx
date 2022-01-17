@@ -3,7 +3,7 @@ import * as Styled from './ProductItem.styles';
 import { ProductItemProps } from './ProductItem.types';
 import { AppLocale } from 'context/locale/appLocale.enum';
 
-export const SingleProduct = ({ productDetails }: ProductItemProps) => {
+export const ProductItem = ({ productDetails }: ProductItemProps) => {
   const { locale, formatMessage, formatNumber } = useLocale();
 
   const price = formatNumber(productDetails.price, {
@@ -25,7 +25,7 @@ export const SingleProduct = ({ productDetails }: ProductItemProps) => {
             <Styled.ConditionLabel>{formatMessage({ id: 'singleProduct.condition' })}:</Styled.ConditionLabel>{' '}
             <Styled.ConditionText>{productDetails.condition}</Styled.ConditionText>
           </div>
-          <div>
+          <div data-testid="price">
             <Styled.PriceInteger>
               {locale === AppLocale.en ? price.substring(0, price.length - 2) : price.substring(0, price.length - 5)}
             </Styled.PriceInteger>
