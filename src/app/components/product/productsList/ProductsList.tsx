@@ -1,11 +1,22 @@
+import { useIntl } from 'react-intl';
 import { SingleProduct } from '../productItem/ProductItem';
-import { PRODUCTS_MOCK } from './productsMock';
 import * as Styled from './ProductsList.style';
+import { ProductsListProps } from './ProductsList.types';
 
-export const ProductsList = () => (
-  <Styled.ProductsList>
-    {PRODUCTS_MOCK.map((product) => (
-      <SingleProduct key={product.id} productDetails={product} />
-    ))}
-  </Styled.ProductsList>
-);
+export const ProductsList = ({ productsList, isLoading, isError }: ProductsListProps) => {
+  const { formatMessage } = useIntl();
+
+  return (
+    <>
+      {isLoading && <Styled.Spinner />}
+      {productsList && !isError && (
+        <Styled.ProductsList>
+          {productsList.map((product) => (
+            <SingleProduct key={product.id} productDetails={product} />
+          ))}
+        </Styled.ProductsList>
+      )}
+      {isError && <Styled.Message>{formatMessage({ id: 'productsList.errorMessage' })}</Styled.Message>}
+    </>
+  );
+};
