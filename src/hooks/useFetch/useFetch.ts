@@ -1,31 +1,23 @@
 import { useEffect, useState } from 'react';
-import { FetchResult, MetaData, QueryParams } from './useFetch.types';
+import { FetchResult } from './useFetch.types';
 
-export const useFetch = <TResponse>(url: string | undefined, queryParams?: QueryParams): FetchResult<TResponse> => {
+export const useFetch = <TResponse>(url: string | undefined): FetchResult<TResponse> => {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<TResponse | undefined>(undefined);
-  const [meta, setMeta] = useState<MetaData | undefined>(undefined);
   const isLoading = !data && !isError;
 
   useEffect(() => {
     const getData = async () => {
       try {
-        if (!url) {
+        if (!url && !(url === '')) {
           throw new Error('Url is undefined');
         }
-        const fetchUrl = new URL(url);
-        if (queryParams) {
-          Object.entries(queryParams).forEach((queryParam) =>
-            fetchUrl.searchParams.append(queryParam[0], String(queryParam[1])),
-          );
-        }
-        const response = await fetch(fetchUrl.toString());
+        const response = await fetch(`${process.env.REACT_APP_API_URL}?${url}`);
         if (!response.ok) {
           throw new Error('Something went wrong');
         }
         const data = await response.json();
-        setData(data.data);
-        setMeta(data.meta);
+        setData(data);
       } catch (error) {
         setIsError(true);
       }
@@ -37,7 +29,7 @@ export const useFetch = <TResponse>(url: string | undefined, queryParams?: Query
       setData(undefined);
       setIsError(false);
     };
-  }, [url, queryParams]);
+  }, [url]);
 
-  return { isLoading, isError, data, meta };
+  return { isLoading, isError, data };
 };

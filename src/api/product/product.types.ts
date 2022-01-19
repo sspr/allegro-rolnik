@@ -6,3 +6,15 @@ export type Product = {
   category: string;
   photo: string;
 };
+
+export type ProductResponse = {
+  meta: {
+    count: number;
+  };
+  data: Product[];
+};
+
+export type GetProductsUrlParams = {
+  page?: number;
+  perPage?: number;
+};

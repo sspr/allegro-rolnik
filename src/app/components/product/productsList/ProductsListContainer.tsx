@@ -1,17 +1,16 @@
 import { ProductsList } from './ProductsList';
-import { useFetch, useUrl } from 'hooks';
-import { Product } from 'api/product/product.types';
-import { ProductsListContianerProps } from './ProductsListContainer.types';
+import { useFetch } from 'hooks';
+import { ProductResponse } from 'api/product/product.types';
+import { ProductsListContianerProps } from './ProductsList.types';
+import { createGetProductsUrl } from 'api/product/product';
 import { useEffect } from 'react';
 
-export const ProductsListContainer = ({ setProductsCount }: ProductsListContianerProps) => {
-  const { queryParams } = useUrl();
-
-  const { data, isLoading, isError, meta } = useFetch<Product[]>(process.env.REACT_APP_API_URL, queryParams);
+export const ProductsListContainer = ({ onDataFetch, productsUrlParams }: ProductsListContianerProps) => {
+  const { data, isLoading, isError } = useFetch<ProductResponse>(createGetProductsUrl(productsUrlParams));
 
   useEffect(() => {
-    setProductsCount(meta?.count ?? undefined);
-  }, [meta]);
+    onDataFetch(data?.meta.count);
+  }, [data]);
 
-  return <ProductsList productsList={data} isLoading={isLoading} isError={isError} />;
+  return <ProductsList productsList={data?.data} isLoading={isLoading} isError={isError} />;
 };

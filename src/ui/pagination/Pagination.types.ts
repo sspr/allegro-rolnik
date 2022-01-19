@@ -1,3 +1,7 @@
+import { GetProductsUrlParams } from 'api/product/product.types';
+
 export type PaginationProps = {
-  productsCount: number | undefined;
+  pageCount: number;
+  currentPage: number;
+  onPageClick: (page: GetProductsUrlParams) => void;
 };

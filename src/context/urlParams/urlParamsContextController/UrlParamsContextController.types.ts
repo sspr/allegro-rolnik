@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export type UrlContextControllerProps = {
+export type UrlParamsContextControllerProps = {
   children: ReactNode;
 };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useIsScreenMobile } from 'hooks';
 import * as Styled from './App.styles';
-import { Header } from 'ui/header/Header';
+import { Header } from 'ui';
 import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
 

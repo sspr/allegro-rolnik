@@ -1,4 +1,5 @@
 export type PaginationLinkProps = {
-  currentPage: number;
-  card: number;
+  number: number;
+  isActive?: boolean;
+  onClick: () => void;
 };

@@ -1,4 +1,4 @@
-export * from './useLocale';
-export * from './useIsScreenMobile';
+export * from './useLocale/useLocale';
+export * from './useIsScreenMobile/useIsScreenMobile';
 export * from './useFetch/useFetch';
-export * from './useUrl';
+export * from './useUrlParams/useUrlParams';
