@@ -4,13 +4,20 @@ import { MainProps } from './Main.types';
 import { ProductsListContainer } from '../product/productsList/ProductsListContainer';
 import { Pagination } from 'ui';
 import { useState } from 'react';
-import { useUrlParams } from 'hooks';
+import { NumberParam, useQueryParams, withDefault } from 'use-query-params';
+import { defaultProductParams } from 'api/product/defaultParams';
 
 export const Main = ({ isScreenMobile, onFilterClick }: MainProps) => {
   const { formatMessage } = useLocale();
   const [productsCount, setProductsCount] = useState<number | undefined>(undefined);
+  const [query, setQuery] = useQueryParams({
+    page: withDefault(NumberParam, defaultProductParams.page),
+    perPage: withDefault(NumberParam, defaultProductParams.perPage),
+  });
 
-  const { urlParams, changeUrlParams } = useUrlParams();
+  const updatePageQuery = (page: number) => {
+    setQuery({ page });
+  };
 
   return (
     <Styled.Main>
@@ -19,11 +26,11 @@ export const Main = ({ isScreenMobile, onFilterClick }: MainProps) => {
           {formatMessage({ id: 'main.filterSwitch' })}
         </Styled.FiltersSwitch>
       )}
-      <ProductsListContainer onDataFetch={setProductsCount} productsUrlParams={urlParams} />
+      <ProductsListContainer onDataFetch={setProductsCount} productsUrlParams={query} />
       <Pagination
-        pageCount={urlParams.perPage && productsCount ? Math.ceil(productsCount / urlParams.perPage) : 1}
-        currentPage={urlParams.page || 1}
-        onPageClick={changeUrlParams}
+        pageCount={query.perPage && productsCount ? Math.ceil(productsCount / query.perPage) : 1}
+        currentPage={query.page || 1}
+        onPageClick={updatePageQuery}
       />
     </Styled.Main>
   );

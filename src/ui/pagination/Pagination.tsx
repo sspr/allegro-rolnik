@@ -16,7 +16,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
       {currentPage > 1 && (
         <Styled.Previous
           onClick={() => {
-            onPageClick({ page: currentPage - 1 });
+            onPageClick(currentPage - 1);
           }}
         >
           <img src={arrowRight} alt={formatMessage({ id: 'pagination.arrowLeftAlt' })} />{' '}
@@ -29,7 +29,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
             <PaginationLink
               number={1}
               onClick={() => {
-                onPageClick({ page: 1 });
+                onPageClick(1);
               }}
             />
             <Styled.Label>...</Styled.Label>
@@ -42,7 +42,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
               isActive={page === currentPage}
               number={page}
               onClick={() => {
-                onPageClick({ page });
+                onPageClick(page);
               }}
             />
           ))}
@@ -54,7 +54,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
               isActive={page === currentPage}
               number={page}
               onClick={() => {
-                onPageClick({ page });
+                onPageClick(page);
               }}
             />
           ))}
@@ -66,7 +66,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
               isActive={page === currentPage}
               number={page}
               onClick={() => {
-                onPageClick({ page });
+                onPageClick(page);
               }}
             />
           ))}
@@ -79,7 +79,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
               isActive={page === currentPage}
               number={page}
               onClick={() => {
-                onPageClick({ page });
+                onPageClick(page);
               }}
             />
           ))}
@@ -91,7 +91,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
               isActive={page === currentPage}
               number={page}
               onClick={() => {
-                onPageClick({ page });
+                onPageClick(page);
               }}
             />
           ))}
@@ -99,14 +99,14 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
         <PaginationLink
           number={pages.length}
           onClick={() => {
-            onPageClick({ page: pages.length });
+            onPageClick(pages.length);
           }}
         />
       </span>
       {currentPage < pages.length && (
         <Styled.Next
           onClick={() => {
-            onPageClick({ page: currentPage + 1 });
+            onPageClick(currentPage + 1);
           }}
         >
           {formatMessage({ id: 'pagination.next' })}{' '}

@@ -1,7 +1,14 @@
+import { theme } from 'assets/styles/theme.styles';
 import { render } from 'tests';
 import { Pagination } from './Pagination';
 
 describe('Pagination component', () => {
+  it('renders one actvie link', () => {
+    const { getByText } = render(<Pagination pageCount={10} currentPage={1} onPageClick={() => {}} />);
+
+    expect(getByText('1')).toHaveStyle({ color: theme.color.primary });
+  });
+
   it('does not render "previous" link and renders "next" link on first card', () => {
     const { getByText, queryByText } = render(<Pagination pageCount={10} currentPage={1} onPageClick={() => {}} />);
 
@@ -38,14 +45,21 @@ describe('Pagination component', () => {
   });
 
   it('does not render "..." when active card number equal to 4', () => {
-    const { getByText, queryByText } = render(<Pagination pageCount={4} currentPage={1} onPageClick={() => {}} />);
+    const { queryByText } = render(<Pagination pageCount={4} currentPage={1} onPageClick={() => {}} />);
 
     expect(queryByText('...')).not.toBeInTheDocument();
   });
 
-  it('does not render "..." when active page count is equal to 6 or lower', () => {
-    const { queryByText } = render(<Pagination pageCount={6} currentPage={1} onPageClick={() => {}} />);
+  const mockFn = jest.fn();
 
-    expect(queryByText('...')).not.toBeInTheDocument();
+  it('renders links that are clickable', () => {
+    const { getByText } = render(<Pagination pageCount={10} currentPage={2} onPageClick={mockFn} />);
+
+    getByText('3').click();
+    getByText('4').click();
+    getByText('next').click();
+    getByText('previous').click();
+
+    expect(mockFn).toHaveBeenCalledTimes(4);
   });
 });
