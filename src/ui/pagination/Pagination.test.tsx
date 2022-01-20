@@ -3,7 +3,7 @@ import { render } from 'tests';
 import { Pagination } from './Pagination';
 
 describe('Pagination component', () => {
-  it('renders one actvie link', () => {
+  it('renders one active link', () => {
     const { getByText } = render(<Pagination pageCount={10} currentPage={1} onPageClick={() => {}} />);
 
     expect(getByText('1')).toHaveStyle({ color: theme.color.primary });
@@ -52,7 +52,7 @@ describe('Pagination component', () => {
 
   const mockFn = jest.fn();
 
-  it('renders links that are clickable', () => {
+  it('runs callback on click correctly', () => {
     const { getByText } = render(<Pagination pageCount={10} currentPage={2} onPageClick={mockFn} />);
 
     getByText('3').click();

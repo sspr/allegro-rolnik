@@ -6,7 +6,7 @@ export type ProductsListProps = {
   isError: boolean;
 };
 
-export type ProductsListContianerProps = {
+export type ProductsListContainerProps = {
   productsUrlParams: GetProductsUrlParams;
   onDataFetch: (productsCount: number | undefined) => void;
 };

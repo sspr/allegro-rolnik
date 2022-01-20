@@ -1,12 +1,13 @@
 import { ProductsList } from './ProductsList';
 import { useFetch } from 'hooks';
 import { ProductResponse } from 'api/product/product.types';
-import { ProductsListContianerProps } from './ProductsList.types';
+import { ProductsListContainerProps } from './ProductsList.types';
 import { useEffect } from 'react';
 import { stringify } from 'querystring';
+import { createGetProductsUrl } from 'api/product/product';
 
-export const ProductsListContainer = ({ onDataFetch, productsUrlParams }: ProductsListContianerProps) => {
-  const { data, isLoading, isError } = useFetch<ProductResponse>(`machines?${stringify(productsUrlParams)}`);
+export const ProductsListContainer = ({ onDataFetch, productsUrlParams }: ProductsListContainerProps) => {
+  const { data, isLoading, isError } = useFetch<ProductResponse>(`machines?${createGetProductsUrl(productsUrlParams)}`);
 
   useEffect(() => {
     onDataFetch(data?.meta.count);
