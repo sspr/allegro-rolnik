@@ -7,5 +7,5 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
     searchParams.append(key, String(value));
   }
 
-  return searchParams.toString();
+  return `machines?${searchParams.toString()}`;
 };
