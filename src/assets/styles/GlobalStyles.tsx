@@ -34,5 +34,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`${({ theme: { co
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
   }
+
+  button {
+    font-family: 'Open Sans', sans-serif;
+  }
 `}
 `;

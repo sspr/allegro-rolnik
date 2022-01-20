@@ -6,5 +6,10 @@
   "main.filterSwitch": "filtry i kategorie",
   "productsList.loadingData": "Ładowanie produktów...",
   "productsList.errorMessage": "Coś poszło nie tak, prosimy spróbować później.",
-  "singleProduct.condition": "stan"
+  "singleProduct.condition": "stan",
+  "pagination.previous": "poprzedni",
+  "pagination.next": "następny",
+  "pagination.of": "z",
+  "pagination.arrowLeftAlt": "Strzałka w lewo",
+  "pagination.arrowRightAlt": "Strzałka w prawo"
 }

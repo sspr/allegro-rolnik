@@ -1,6 +1,5 @@
-import { ProductItem } from '../productItem/ProductItem';
 import { useIntl } from 'react-intl';
-import { SingleProduct } from '../productItem/ProductItem';
+import { ProductItem } from '../productItem/ProductItem';
 import * as Styled from './ProductsList.style';
 import { ProductsListProps } from './ProductsList.types';
 
@@ -13,7 +12,7 @@ export const ProductsList = ({ productsList, isLoading, isError }: ProductsListP
       {productsList && !isError && (
         <Styled.ProductsList>
           {productsList.map((product) => (
-            <SingleProduct key={product.id} productDetails={product} />
+            <ProductItem key={product.id} productDetails={product} />
           ))}
         </Styled.ProductsList>
       )}
