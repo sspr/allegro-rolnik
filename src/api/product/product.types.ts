@@ -17,4 +17,5 @@ export type ProductResponse = {
 export type GetProductsUrlParams = {
   page?: number;
   perPage?: number;
+  category?: (string | null)[];
 };

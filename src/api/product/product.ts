@@ -4,7 +4,11 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   const searchParams = new URLSearchParams();
 
   for (const [key, value] of Object.entries(params)) {
-    searchParams.append(key, String(value));
+    Array.isArray(value)
+      ? value.forEach((element, index) => {
+          searchParams.append(`${key}[${index}]`, String(element));
+        })
+      : searchParams.append(key, String(value));
   }
 
   return `machines?${searchParams.toString()}`;
