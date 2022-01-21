@@ -11,5 +11,11 @@
   "pagination.next": "następny",
   "pagination.of": "z",
   "pagination.arrowLeftAlt": "Strzałka w lewo",
-  "pagination.arrowRightAlt": "Strzałka w prawo"
+  "pagination.arrowRightAlt": "Strzałka w prawo",
+  "categories.categories": "Kategorie",
+  "categories.goBackTo": "cofnij do",
+  "categories.allMachines": "wszystkie maszyny",
+  "categories.tractor": "Traktory",
+  "categories.sidecar": "Przyczepy",
+  "categories.harvester": "Kombajny"
 }

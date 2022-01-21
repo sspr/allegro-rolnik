@@ -23,10 +23,8 @@ export const App = () => {
 
   const updateCategoryQuery = (categoryName: string) => {
     if (query.category !== undefined) {
-      const category = query.category.includes(categoryName)
-        ? query.category.filter((singleCategory) => singleCategory !== categoryName)
-        : [...query?.category, categoryName];
-      setQuery({ category });
+      const category = query.category.includes(categoryName) ? [] : [categoryName];
+      setQuery({ category, page: 1 });
     }
   };
 
@@ -40,7 +38,12 @@ export const App = () => {
       <Styled.Wrapper>
         <Styled.Content>
           {(!isScreenMobile || isMobileFiltersVisable) && (
-            <Sidebar isScreenMobile={isScreenMobile} onFiltersClose={toggleFilters} />
+            <Sidebar
+              isScreenMobile={isScreenMobile}
+              onFiltersClose={toggleFilters}
+              onCategoryClick={updateCategoryQuery}
+              activeCategory={query?.category ? query?.category[0] : undefined}
+            />
           )}
           <Main
             isScreenMobile={isScreenMobile}

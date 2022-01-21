@@ -11,5 +11,11 @@
   "pagination.next": "next",
   "pagination.of": "of",
   "pagination.arrowLeftAlt": "Arrow left",
-  "pagination.arrowRightAlt": "Arrow right"
+  "pagination.arrowRightAlt": "Arrow right",
+  "categories.categories": "Categories",
+  "categories.goBackTo": "go back to",
+  "categories.allMachines": "all machines",
+  "categories.tractor": "Tractors",
+  "categories.sidecar": "Sidecars",
+  "categories.harvester": "Harvesters"
 }

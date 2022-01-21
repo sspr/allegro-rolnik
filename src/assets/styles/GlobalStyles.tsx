@@ -23,16 +23,20 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`${({ theme: { co
 
   h2 {
     font-size: ${fontSize.header};
+    margin-bottom: 14px;
   }
 
   h3 {
     font-size: ${fontSize.subheader};
+    padding-top: 10px;
+    margin-bottom: 12px;
   }
 
   h2,
   h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+    margin-top: 0;
   }
 
   button {

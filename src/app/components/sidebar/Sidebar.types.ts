@@ -1,4 +1,6 @@
 export type SidebarProps = {
   isScreenMobile: boolean;
-  onFiltersClose: () => void;
+  onFiltersClose: VoidFunction;
+  onCategoryClick: (categoryName: string) => void;
+  activeCategory: string | null | undefined;
 };

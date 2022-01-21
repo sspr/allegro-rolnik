@@ -6,7 +6,7 @@ export const Sidebar = styled.div`
     max-width: 25%;
     width: 25%;
     background-color: ${color.background.white};
-    padding: 16px;
+    padding: 24px;
     box-sizing: border-box;
 
     @media (max-width: ${screenResolution.medium}) {

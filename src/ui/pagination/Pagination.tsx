@@ -35,7 +35,7 @@ export const Pagination = ({ pageCount, currentPage, onPageClick }: PaginationPr
             <Styled.Label>...</Styled.Label>
           </>
         )}
-        {pages.length < 6 &&
+        {pages.length <= 6 &&
           pages.map((page) => (
             <PaginationLink
               key={page}
