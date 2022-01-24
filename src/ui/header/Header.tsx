@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <Styled.HeaderWrapper>
       <Styled.Header>
-        <Styled.Logo>
+        <Styled.Logo href="/">
           <img src={logo} alt={formatMessage({ id: 'header.logoAlt' })} />
           <span>{formatMessage({ id: 'header.logoText' })}</span>
         </Styled.Logo>

@@ -3,10 +3,12 @@ import { useFetch } from 'hooks';
 import { ProductResponse } from 'api/product/product.types';
 import { ProductsListContainerProps } from './ProductsList.types';
 import { useEffect } from 'react';
-import { createGetProductsUrl } from 'api/product/product';
+import { createGetProductsUrl, validateProductsUrlParams } from 'api/product/product';
 
 export const ProductsListContainer = ({ onDataFetch, productsUrlParams }: ProductsListContainerProps) => {
-  const { data, isLoading, isError } = useFetch<ProductResponse>(createGetProductsUrl(productsUrlParams));
+  const { data, isLoading, isError } = useFetch<ProductResponse>(
+    createGetProductsUrl(validateProductsUrlParams(productsUrlParams)),
+  );
 
   useEffect(() => {
     onDataFetch(data?.meta.count);

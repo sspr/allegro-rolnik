@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIsScreenMobile } from 'hooks';
 import * as Styled from './App.styles';
 import { Header } from 'ui';
@@ -8,8 +8,19 @@ import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-
 import { defaultProductParams } from 'api/product/defaultParams';
 import { GetProductsUrlParams } from 'api/product/product.types';
 import { ProductCategory } from 'api/product/productCategory.enum';
+import { useIntl } from 'react-intl';
+import { validateProductsUrlParams } from 'api/product/product';
 
 export const App = () => {
+  const { formatMessage } = useIntl();
+  const translatedPageTitle = formatMessage({ id: 'page.title' });
+  if (document.title !== translatedPageTitle) {
+    document.title = translatedPageTitle;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', formatMessage({ id: 'page.description' }));
+  }
+
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
   const isScreenMobile = useIsScreenMobile();
 
@@ -18,6 +29,10 @@ export const App = () => {
     perPage: withDefault(NumberParam, defaultProductParams.perPage),
     category: withDefault(ArrayParam, defaultProductParams.category),
   });
+
+  useEffect(() => {
+    setQuery(validateProductsUrlParams(query));
+  }, []);
 
   const updatePageQuery = (page: number) => {
     setQuery({ page });
