@@ -4,5 +4,5 @@ export type MainProps = {
   isScreenMobile: boolean;
   onFilterClick: () => void;
   productsQuery: GetProductsUrlParams;
-  changeCurrentPage: (page: number) => void;
+  changeProductsQuery: (page: number) => void;
 };

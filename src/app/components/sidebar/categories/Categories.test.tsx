@@ -1,16 +1,16 @@
 import { theme } from 'assets/styles/theme.styles';
 import { render } from 'tests';
-import { CATEGORY_MOCK } from 'tests/categoriesMock';
+import { CATEGORY_MOCK } from 'tests/mock/categoriesMock';
 import { Categories } from './Categories';
 
 describe('Categories component', () => {
-  it('renders "Categories" header', () => {
+  it('renders Categories header correctly', () => {
     const { getByText } = render(<Categories activeCategory={undefined} onCategoryClick={() => {}} />);
 
     expect(getByText('Categories')).toBeInTheDocument();
   });
 
-  it('renders all categories with counts', () => {
+  it('renders all categories with counts when none selected', () => {
     const { getByText } = render(<Categories activeCategory={undefined} onCategoryClick={() => {}} />);
 
     CATEGORY_MOCK.forEach((category) => {
@@ -32,24 +32,19 @@ describe('Categories component', () => {
     expect(mockFn).toHaveBeenCalledTimes(CATEGORY_MOCK.length);
   });
 
-  it('renders not clickable active category which has primary color', () => {
+  it('renders selected category correctly', () => {
     const { getByText } = render(<Categories activeCategory={CATEGORY_MOCK[0].name} onCategoryClick={mockFn} />);
 
     getByText(`${CATEGORY_MOCK[0].name}s`, { exact: false }).click();
 
     expect(mockFn).not.toHaveBeenCalled();
     expect(getByText(`${CATEGORY_MOCK[0].name}s`, { exact: false })).toHaveStyle({ color: theme.color.primary });
-  });
-
-  it('renders "go back to" link', () => {
-    const { getByText } = render(<Categories activeCategory={CATEGORY_MOCK[0].name} onCategoryClick={() => {}} />);
-
     expect(getByText('go back to')).toBeInTheDocument();
     expect(getByText('all machines')).toBeInTheDocument();
     expect(getByText('all machines')).toHaveStyle({ color: theme.color.secondary });
   });
 
-  it('renders clickable "all machines" button', () => {
+  it('fires "all machines" callback correctly', () => {
     const { getByText } = render(<Categories activeCategory={CATEGORY_MOCK[0].name} onCategoryClick={mockFn} />);
 
     getByText('all machines').click();

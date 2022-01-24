@@ -1,8 +1,8 @@
 import { useIntl } from 'react-intl';
-import { LabelWithCount } from 'ui/labelWithCount/LabelWithCount';
+import { LabelWithCount } from 'ui';
 import * as Styled from './Categories.styles';
 import { CategoriesProps } from './Categories.types';
-import { CATEGORY_MOCK } from '../../../../tests/categoriesMock';
+import { CATEGORY_MOCK } from 'tests/mock/categoriesMock';
 
 export const Categories = ({ onCategoryClick, activeCategory }: CategoriesProps) => {
   const { formatMessage } = useIntl();

@@ -1,6 +1,8 @@
+import { ProductCategory } from 'api/product/productCategory.enum';
+
 export type SidebarProps = {
   isScreenMobile: boolean;
   onFiltersClose: VoidFunction;
-  onCategoryClick: (categoryName: string) => void;
-  activeCategory: string | null | undefined;
+  onCategoryClick: (categoryName: ProductCategory) => void;
+  activeCategory: ProductCategory | undefined;
 };

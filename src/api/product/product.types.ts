@@ -1,3 +1,5 @@
+import { ProductCategory } from './productCategory.enum';
+
 export type Product = {
   id: string;
   name: string;
@@ -17,5 +19,5 @@ export type ProductResponse = {
 export type GetProductsUrlParams = {
   page?: number;
   perPage?: number;
-  category?: (string | null)[];
+  category?: ProductCategory[];
 };

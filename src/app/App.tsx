@@ -6,6 +6,8 @@ import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
+import { GetProductsUrlParams } from 'api/product/product.types';
+import { ProductCategory } from 'api/product/productCategory.enum';
 
 export const App = () => {
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
@@ -21,7 +23,7 @@ export const App = () => {
     setQuery({ page });
   };
 
-  const updateCategoryQuery = (categoryName: string) => {
+  const updateCategoryQuery = (categoryName: ProductCategory) => {
     if (query.category !== undefined) {
       const category = query.category.includes(categoryName) ? [] : [categoryName];
       setQuery({ category, page: 1 });
@@ -42,14 +44,14 @@ export const App = () => {
               isScreenMobile={isScreenMobile}
               onFiltersClose={toggleFilters}
               onCategoryClick={updateCategoryQuery}
-              activeCategory={query?.category ? query?.category[0] : undefined}
+              activeCategory={query?.category ? (query?.category[0] as ProductCategory) : undefined}
             />
           )}
           <Main
             isScreenMobile={isScreenMobile}
             onFilterClick={toggleFilters}
-            productsQuery={query}
-            changeCurrentPage={updatePageQuery}
+            productsQuery={query as GetProductsUrlParams}
+            changeProductsQuery={updatePageQuery}
           />
         </Styled.Content>
       </Styled.Wrapper>

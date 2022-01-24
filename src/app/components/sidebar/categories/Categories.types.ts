@@ -1,4 +1,6 @@
+import { ProductCategory } from 'api/product/productCategory.enum';
+
 export type CategoriesProps = {
-  onCategoryClick: (category: string) => void;
-  activeCategory: string | null | undefined;
+  onCategoryClick: (category: ProductCategory) => void;
+  activeCategory: ProductCategory | undefined;
 };
