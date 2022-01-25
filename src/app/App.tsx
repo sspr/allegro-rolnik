@@ -6,8 +6,9 @@ import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
-import { ProductCategory } from 'api/product/productCategory.enum';
 import { validateProductsUrlParams } from 'api/product/product';
+import { GetProductsUrlParams, ProductCategory } from 'api/product/product.types';
+
 
 export const App = () => {
   usePageTitle();
@@ -58,8 +59,8 @@ export const App = () => {
           <Main
             isScreenMobile={isScreenMobile}
             onFilterClick={toggleFilters}
-            productsQuery={validatedQuery}
-            changeProductsQuery={updatePageQuery}
+            productsParams={query as GetProductsUrlParams}
+            onPageClick={updatePageQuery}
           />
         </Styled.Content>
       </Styled.Wrapper>

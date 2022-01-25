@@ -1,4 +1,4 @@
-import { ProductCategory } from 'api/product/productCategory.enum';
+import { ProductCategory } from 'api/product/product.types';
 
 export type CategoriesProps = {
   onCategoryClick: (category: ProductCategory) => void;
