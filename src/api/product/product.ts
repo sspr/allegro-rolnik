@@ -21,15 +21,15 @@ export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfi
   const validateNumber = (number: number | undefined, defaultNumber: number | undefined) =>
     number && Number.isInteger(number) && number > 0 ? number : defaultNumber;
 
-  const validatePage = validateNumber(query.page, defaultProductParams.page);
-  const validatePerPage = validateNumber(query.perPage, defaultProductParams.perPage);
-  const validateCategory = Array.isArray(query.category)
+  const validatedPage = validateNumber(query.page, defaultProductParams.page);
+  const validatedPerPage = validateNumber(query.perPage, defaultProductParams.perPage);
+  const validatedCategory = Array.isArray(query.category)
     ? query.category.filter((cat) => cat in ProductCategory)
     : defaultProductParams.category;
 
   return {
-    page: validatePage,
-    perPage: validatePerPage,
-    category: validateCategory,
+    page: validatedPage,
+    perPage: validatedPerPage,
+    category: validatedCategory,
   };
 };
