@@ -6,7 +6,6 @@ import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
-import { GetProductsUrlParams } from 'api/product/product.types';
 import { ProductCategory } from 'api/product/productCategory.enum';
 import { validateProductsUrlParams } from 'api/product/product';
 
@@ -22,8 +21,10 @@ export const App = () => {
     category: withDefault(ArrayParam, defaultProductParams.category),
   });
 
+  const validatedQuery = validateProductsUrlParams(query);
+
   useEffect(() => {
-    setQuery(validateProductsUrlParams(query));
+    setQuery(validatedQuery);
   }, []);
 
   const updatePageQuery = (page: number) => {
@@ -51,13 +52,13 @@ export const App = () => {
               isScreenMobile={isScreenMobile}
               onFiltersClose={toggleFilters}
               onCategoryClick={updateCategoryQuery}
-              activeCategory={query?.category ? (query?.category[0] as ProductCategory) : undefined}
+              activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
             />
           )}
           <Main
             isScreenMobile={isScreenMobile}
             onFilterClick={toggleFilters}
-            productsQuery={query as GetProductsUrlParams}
+            productsQuery={validatedQuery}
             changeProductsQuery={updatePageQuery}
           />
         </Styled.Content>

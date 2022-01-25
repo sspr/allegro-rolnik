@@ -17,7 +17,7 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   return `machines?${searchParams.toString()}`;
 };
 
-export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfigMap>) => {
+export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfigMap>): GetProductsUrlParams => {
   const validateNumber = (number: number | undefined, defaultNumber: number | undefined) =>
     number && Number.isInteger(number) && number > 0 ? number : defaultNumber;
 
