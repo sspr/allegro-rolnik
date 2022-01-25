@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
   border-bottom: 1px solid ${({ theme }) => theme.color.border.lightgrey};
+  background-color: ${({ theme }) => theme.color.background.white};
 `;
 
 export const Header = styled.div`
@@ -14,7 +15,7 @@ export const Header = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.a`
   display: flex;
   align-items: top;
   gap: 5px;
@@ -22,6 +23,10 @@ export const Logo = styled.div`
   font-weight: 600;
   font-size: 18px;
   user-select: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
 
 export const Form = styled.form`

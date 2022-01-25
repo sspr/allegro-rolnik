@@ -14,7 +14,14 @@ export type ProductResponse = {
   data: Product[];
 };
 
+export enum ProductCategory {
+  TRACTOR = 'tractor',
+  SIDECAR = 'sidecar',
+  HARVESTER = 'harvester',
+}
+
 export type GetProductsUrlParams = {
   page?: number;
   perPage?: number;
+  category?: ProductCategory[];
 };
