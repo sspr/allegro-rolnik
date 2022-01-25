@@ -1,7 +1,6 @@
 import { DecodedValueMap, QueryParamConfigMap } from 'use-query-params';
 import { defaultProductParams } from './defaultParams';
-import { GetProductsUrlParams } from './product.types';
-import { ProductCategory } from './productCategory.enum';
+import { GetProductsUrlParams, ProductCategory } from './product.types';
 
 export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   const searchParams = new URLSearchParams();
