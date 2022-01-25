@@ -7,7 +7,7 @@ import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
 import { GetProductsUrlParams } from 'api/product/product.types';
-import { ProductCategory } from 'api/product/productCategory.enum';
+import { ProductCategory } from 'api/product/product.types';
 
 export const App = () => {
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
@@ -50,8 +50,8 @@ export const App = () => {
           <Main
             isScreenMobile={isScreenMobile}
             onFilterClick={toggleFilters}
-            productsQuery={query as GetProductsUrlParams}
-            changeProductsQuery={updatePageQuery}
+            productsParams={query as GetProductsUrlParams}
+            onPageClick={updatePageQuery}
           />
         </Styled.Content>
       </Styled.Wrapper>

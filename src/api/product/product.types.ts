@@ -1,5 +1,3 @@
-import { ProductCategory } from './productCategory.enum';
-
 export type Product = {
   id: string;
   name: string;
@@ -15,6 +13,12 @@ export type ProductResponse = {
   };
   data: Product[];
 };
+
+export enum ProductCategory {
+  TRACTOR = 'tractor',
+  SIDECAR = 'sidecar',
+  HARVESTER = 'harvester',
+}
 
 export type GetProductsUrlParams = {
   page?: number;

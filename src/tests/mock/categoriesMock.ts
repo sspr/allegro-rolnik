@@ -1,4 +1,4 @@
-import { ProductCategory } from 'api/product/productCategory.enum';
+import { ProductCategory } from 'api/product/product.types';
 
 type CategoryMock = {
   name: ProductCategory;
@@ -6,7 +6,7 @@ type CategoryMock = {
 };
 
 export const CATEGORY_MOCK: CategoryMock[] = [
-  { name: ProductCategory.tractor, count: 350 },
-  { name: ProductCategory.sidecar, count: 111 },
-  { name: ProductCategory.harvester, count: 74 },
+  { name: ProductCategory.TRACTOR, count: 350 },
+  { name: ProductCategory.SIDECAR, count: 111 },
+  { name: ProductCategory.HARVESTER, count: 74 },
 ];

@@ -5,7 +5,7 @@ import { ProductsListContainer } from '../product/productsList/ProductsListConta
 import { Pagination } from 'ui';
 import { useState } from 'react';
 
-export const Main = ({ isScreenMobile, onFilterClick, productsQuery, changeProductsQuery }: MainProps) => {
+export const Main = ({ isScreenMobile, onFilterClick, productsParams, onPageClick }: MainProps) => {
   const { formatMessage } = useLocale();
   const [productsCount, setProductsCount] = useState<number | undefined>(undefined);
 
@@ -16,11 +16,11 @@ export const Main = ({ isScreenMobile, onFilterClick, productsQuery, changeProdu
           {formatMessage({ id: 'main.filterSwitch' })}
         </Styled.FiltersSwitch>
       )}
-      <ProductsListContainer onDataFetch={setProductsCount} productsUrlParams={productsQuery} />
+      <ProductsListContainer onDataFetch={setProductsCount} productsUrlParams={productsParams} />
       <Pagination
-        pageCount={productsQuery.perPage && productsCount ? Math.ceil(productsCount / productsQuery.perPage) : 1}
-        currentPage={productsQuery.page || 1}
-        onPageClick={changeProductsQuery}
+        pageCount={productsParams.perPage && productsCount ? Math.ceil(productsCount / productsParams.perPage) : 1}
+        currentPage={productsParams.page || 1}
+        onPageClick={onPageClick}
       />
     </Styled.Main>
   );

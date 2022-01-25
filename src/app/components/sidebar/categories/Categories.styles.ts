@@ -1,11 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const SignleCategory = styled.span`
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0 8px 0;
-`;
-
 export const SingleCategoryName = styled.button`
   ${({ theme: { fontSize, color } }) => css`
     font-family: 'Open Sans', sans-serif;
@@ -24,10 +18,6 @@ export const SingleCategoryName = styled.button`
       cursor: default;
     }
   `}
-`;
-
-export const SignleCategoryCount = styled.span`
-  color: ${({ theme }) => theme.color.text.grey};
 `;
 
 export const GoBack = styled.div`
