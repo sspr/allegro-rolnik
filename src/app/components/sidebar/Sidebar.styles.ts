@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.nav`
   ${({ theme: { color, screenResolution } }) => css`
     flex-basis: 25%;
     max-width: 25%;

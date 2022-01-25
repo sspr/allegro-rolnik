@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import { useIsScreenMobile } from 'hooks';
+import { useEffect, useState } from 'react';
+import { useIsScreenMobile, usePageTitle } from 'hooks';
 import * as Styled from './App.styles';
 import { Header } from 'ui';
 import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
-import { GetProductsUrlParams } from 'api/product/product.types';
-import { ProductCategory } from 'api/product/product.types';
+import { validateProductsUrlParams } from 'api/product/product';
+import { GetProductsUrlParams, ProductCategory } from 'api/product/product.types';
+
 
 export const App = () => {
+  usePageTitle();
+
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
   const isScreenMobile = useIsScreenMobile();
 
@@ -18,6 +21,12 @@ export const App = () => {
     perPage: withDefault(NumberParam, defaultProductParams.perPage),
     category: withDefault(ArrayParam, defaultProductParams.category),
   });
+
+  const validatedQuery = validateProductsUrlParams(query);
+
+  useEffect(() => {
+    setQuery(validatedQuery);
+  }, []);
 
   const updatePageQuery = (page: number) => {
     setQuery({ page });
@@ -44,7 +53,7 @@ export const App = () => {
               isScreenMobile={isScreenMobile}
               onFiltersClose={toggleFilters}
               onCategoryClick={updateCategoryQuery}
-              activeCategory={query?.category ? (query?.category[0] as ProductCategory) : undefined}
+              activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
             />
           )}
           <Main

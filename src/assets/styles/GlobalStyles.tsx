@@ -6,6 +6,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`${({ theme: { co
     font-family: 'Open Sans', sans-serif;
     color: ${color.text.black};
     font-size: ${fontSize.primary};
+    background-color: ${({ theme }) => theme.color.background.grey};
+    min-height: 100vh;
   }
 
   a {
