@@ -9,6 +9,8 @@
   "productsList.loadingData": "Loading products...",
   "productsList.errorMessage": "Something went wrong. Please try agin later.",
   "singleProduct.condition": "condition",
+  "singleProduct.new": "new",
+  "singleProduct.used": "used",
   "pagination.previous": "previous",
   "pagination.next": "next",
   "pagination.of": "of",

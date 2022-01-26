@@ -19,6 +19,9 @@ export const App = () => {
     page: withDefault(NumberParam, defaultProductParams.page),
     perPage: withDefault(NumberParam, defaultProductParams.perPage),
     category: withDefault(ArrayParam, defaultProductParams.category),
+    condition: ArrayParam,
+    minPrice: NumberParam,
+    maxPrice: NumberParam,
   });
 
   const validatedQuery = validateProductsUrlParams(query);

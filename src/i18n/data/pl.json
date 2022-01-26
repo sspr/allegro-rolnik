@@ -9,6 +9,8 @@
   "productsList.loadingData": "Ładowanie produktów...",
   "productsList.errorMessage": "Coś poszło nie tak, prosimy spróbować później.",
   "singleProduct.condition": "stan",
+  "singleProduct.new": "nowy",
+  "singleProduct.used": "używany",
   "pagination.previous": "poprzedni",
   "pagination.next": "następny",
   "pagination.of": "z",

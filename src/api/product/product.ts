@@ -1,6 +1,6 @@
 import { DecodedValueMap, QueryParamConfigMap } from 'use-query-params';
 import { defaultProductParams } from './defaultParams';
-import { GetProductsUrlParams, ProductCategory } from './product.types';
+import { ProductCondition, GetProductsUrlParams, ProductCategory } from './product.types';
 
 export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   const searchParams = new URLSearchParams();
@@ -19,16 +19,39 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
 export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfigMap>): GetProductsUrlParams => {
   const validateNumber = (number: number | undefined, defaultNumber: number | undefined) =>
     number && Number.isInteger(number) && number > 0 ? number : defaultNumber;
+  const validateArray = <TArray>(
+    array: TArray[] | undefined,
+    avaliableValues: any,
+    defaultValue: TArray[] | undefined,
+  ) => (Array.isArray(array) ? array.filter((cat) => String(cat).toUpperCase() in avaliableValues) : defaultValue);
 
   const validatedPage = validateNumber(query.page, defaultProductParams.page);
   const validatedPerPage = validateNumber(query.perPage, defaultProductParams.perPage);
-  const validatedCategory = Array.isArray(query.category)
-    ? query.category.filter((cat) => cat in ProductCategory)
-    : defaultProductParams.category;
+  const validatedCategory = validateArray<ProductCategory>(
+    query.category,
+    ProductCategory,
+    defaultProductParams.category,
+  );
+  const validatedCondition = validateArray<ProductCondition>(
+    query.condition,
+    ProductCondition,
+    defaultProductParams.condition,
+  );
+  const validatedMinPrice = validateNumber(query.minPrice, defaultProductParams.minPrice);
+  const validatedMaxPrice = validateNumber(query.maxPrice, defaultProductParams.maxPrice);
 
-  return {
+  const validatedQuery: GetProductsUrlParams = {
     page: validatedPage,
     perPage: validatedPerPage,
     category: validatedCategory,
+    condition: validatedCondition,
   };
+  if (validatedMinPrice) {
+    validatedQuery.minPrice = validatedMinPrice;
+  }
+  if (validatedMaxPrice) {
+    validatedQuery.maxPrice = validatedMaxPrice;
+  }
+
+  return validatedQuery;
 };

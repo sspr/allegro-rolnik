@@ -20,8 +20,16 @@ export enum ProductCategory {
   HARVESTER = 'harvester',
 }
 
+export enum ProductCondition {
+  NEW = 'new',
+  USED = 'used',
+}
+
 export type GetProductsUrlParams = {
   page?: number;
   perPage?: number;
   category?: ProductCategory[];
+  condition?: ProductCondition[];
+  minPrice?: number;
+  maxPrice?: number;
 };
