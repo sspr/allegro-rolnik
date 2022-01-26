@@ -7,7 +7,7 @@ import { Sidebar } from './components/sidebar/Sidebar';
 import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
 import { validateProductsUrlParams } from 'api/product/product';
-import { ProductCategory } from 'api/product/product.types';
+import { ProductCategory, ProductCondition } from 'api/product/product.types';
 
 export const App = () => {
   usePageTitle();
@@ -19,7 +19,7 @@ export const App = () => {
     page: withDefault(NumberParam, defaultProductParams.page),
     perPage: withDefault(NumberParam, defaultProductParams.perPage),
     category: withDefault(ArrayParam, defaultProductParams.category),
-    condition: ArrayParam,
+    condition: withDefault(ArrayParam, defaultProductParams.condition),
     minPrice: NumberParam,
     maxPrice: NumberParam,
   });
@@ -35,13 +35,30 @@ export const App = () => {
   };
 
   const updateCategoryQuery = (categoryName: ProductCategory) => {
-    if (query.category !== undefined) {
-      const category = query.category.includes(categoryName) ? [] : [categoryName];
+    if (validatedQuery.category !== undefined) {
+      const category = validatedQuery.category.includes(categoryName) ? [] : [categoryName];
       setQuery({ category, page: 1 });
     }
   };
 
-  const toggleFilters = () => {
+  const updateConditionQuery = (conditionValue: ProductCondition) => {
+    if (validatedQuery.condition) {
+      const condition: ProductCondition[] = [];
+      if (validatedQuery.condition.includes(conditionValue)) {
+        condition.push(...validatedQuery.condition.filter((cond) => cond !== conditionValue));
+      } else {
+        condition.push(...validatedQuery.condition);
+        condition.push(conditionValue);
+      }
+      setQuery({ condition, page: 1 });
+    }
+  };
+
+  const filersQuery = {
+    condition: validatedQuery?.condition,
+  };
+
+  const toggleMobileSidebar = () => {
     setIsMobileFiltersVisable((prevState) => !prevState);
   };
 
@@ -53,14 +70,16 @@ export const App = () => {
           {(!isScreenMobile || isMobileFiltersVisable) && (
             <Sidebar
               isScreenMobile={isScreenMobile}
-              onFiltersClose={toggleFilters}
+              onFiltersClose={toggleMobileSidebar}
               onCategoryClick={updateCategoryQuery}
               activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
+              onConditionClick={updateConditionQuery}
+              activeFilters={filersQuery}
             />
           )}
           <Main
             isScreenMobile={isScreenMobile}
-            onFilterClick={toggleFilters}
+            onMobileSidebarSwitchClick={toggleMobileSidebar}
             productsParams={validatedQuery}
             onPageClick={updatePageQuery}
           />

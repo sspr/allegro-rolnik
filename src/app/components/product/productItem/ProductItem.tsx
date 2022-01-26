@@ -24,7 +24,7 @@ export const ProductItem = ({ productDetails }: ProductItemProps) => {
           <div>
             <Styled.ConditionLabel>{formatMessage({ id: 'singleProduct.condition' })}:</Styled.ConditionLabel>{' '}
             <Styled.ConditionText>
-              {formatMessage({ id: `singleProduct.${productDetails.condition}` })}
+              {formatMessage({ id: `singleProduct.condition.${productDetails.condition}` })}
             </Styled.ConditionText>
           </div>
           <div data-testid="price">

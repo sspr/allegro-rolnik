@@ -5,16 +5,16 @@ import { ProductsListContainer } from '../product/productsList/ProductsListConta
 import { Pagination } from 'ui';
 import { useState } from 'react';
 
-export const Main = ({ isScreenMobile, onFilterClick, productsParams, onPageClick }: MainProps) => {
+export const Main = ({ isScreenMobile, onMobileSidebarSwitchClick, productsParams, onPageClick }: MainProps) => {
   const { formatMessage } = useLocale();
   const [productsCount, setProductsCount] = useState<number | undefined>(undefined);
 
   return (
     <Styled.Main>
       {isScreenMobile && (
-        <Styled.FiltersSwitch onClick={onFilterClick}>
+        <Styled.MobileSidebarSwitch onClick={onMobileSidebarSwitchClick}>
           {formatMessage({ id: 'main.filterSwitch' })}
-        </Styled.FiltersSwitch>
+        </Styled.MobileSidebarSwitch>
       )}
       <ProductsListContainer onDataFetch={setProductsCount} productsUrlParams={productsParams} />
       <Pagination

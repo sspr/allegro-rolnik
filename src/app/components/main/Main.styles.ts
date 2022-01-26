@@ -23,7 +23,7 @@ export const Main = styled.main`
   `}
 `;
 
-export const FiltersSwitch = styled.div`
+export const MobileSidebarSwitch = styled.div`
   color: ${({ theme }) => theme.color.secondary};
   text-transform: uppercase;
   text-align: center;
