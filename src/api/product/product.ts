@@ -49,6 +49,7 @@ export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfi
     condition: validatedCondition,
     minPrice: validatedMinPrice,
     maxPrice: validatedMaxPrice,
+    search: query.search,
   };
 
   return validatedQuery;

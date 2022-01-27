@@ -25,7 +25,7 @@ export const Sidebar = styled.nav`
   `}
 `;
 
-export const FiltersCardCloser = styled.div`
+export const MobileSidebarCloser = styled.div`
   ${({ theme: { color } }) => css`
     color: ${color.text.black};
     font-size: 20px;

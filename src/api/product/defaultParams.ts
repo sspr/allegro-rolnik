@@ -7,4 +7,5 @@ export const defaultProductParams: GetProductsUrlParams = {
   condition: [],
   minPrice: undefined,
   maxPrice: undefined,
+  search: undefined,
 };

@@ -6,7 +6,7 @@ import { Price } from './price/Price';
 import { useLocale } from 'hooks';
 import { FormatNumberOptions } from 'react-intl';
 
-export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: FiltersProps) => {
+export const Filters = ({ onConditionClick, onPriceChange, onSearchLabelClick, activeFilters }: FiltersProps) => {
   const { formatMessage, formatNumber } = useLocale();
 
   const currencyConfig: FormatNumberOptions = {
@@ -19,7 +19,8 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
     <>
       {((activeFilters.condition && activeFilters.condition.length > 0) ||
         activeFilters.minPrice ||
-        activeFilters.maxPrice) && (
+        activeFilters.maxPrice ||
+        (activeFilters.search && activeFilters.search !== '')) && (
         <Styled.FiltersApplied>
           {activeFilters.condition &&
             activeFilters.condition.length > 0 &&
@@ -52,6 +53,15 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
                 id: `filters.maxPrice`,
               })}`}
               text={formatNumber(activeFilters.maxPrice, currencyConfig)}
+            />
+          )}
+          {activeFilters.search && activeFilters.search !== '' && (
+            <LabelWithButton
+              onClick={() => {
+                onSearchLabelClick();
+              }}
+              prefix={formatMessage({ id: `filters.search` })}
+              text={activeFilters.search}
             />
           )}
         </Styled.FiltersApplied>

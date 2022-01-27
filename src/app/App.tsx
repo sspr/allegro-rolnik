@@ -4,7 +4,7 @@ import * as Styled from './App.styles';
 import { Header } from 'ui';
 import { Main } from './components/main/Main';
 import { Sidebar } from './components/sidebar/Sidebar';
-import { ArrayParam, NumberParam, useQueryParams, withDefault } from 'use-query-params';
+import { ArrayParam, NumberParam, StringParam, useQueryParams, withDefault } from 'use-query-params';
 import { defaultProductParams } from 'api/product/defaultParams';
 import { validateProductsUrlParams } from 'api/product/product';
 import { ProductCategory, ProductCondition } from 'api/product/product.types';
@@ -22,6 +22,7 @@ export const App = () => {
     condition: withDefault(ArrayParam, defaultProductParams.condition),
     minPrice: NumberParam,
     maxPrice: NumberParam,
+    search: StringParam,
   });
 
   const validatedQuery = validateProductsUrlParams(query);
@@ -64,10 +65,16 @@ export const App = () => {
     setQuery({ ...price, page: 1 });
   };
 
+  const updateSearchQuery = (search: string) => {
+    search === '' ? setQuery({ search: undefined, page: 1 }) : setQuery({ search, page: 1 });
+  };
+
   const filersQuery = {
+    category: validatedQuery.category ? validatedQuery.category[0] : undefined,
     condition: validatedQuery?.condition,
     minPrice: validatedQuery?.minPrice,
     maxPrice: validatedQuery?.maxPrice,
+    search: validatedQuery?.search,
   };
 
   const toggleMobileSidebar = () => {
@@ -76,17 +83,19 @@ export const App = () => {
 
   return (
     <>
-      <Header />
+      <Header inputValue={validatedQuery.search ? validatedQuery.search : ''} onSubmit={updateSearchQuery} />
       <Styled.Wrapper>
         <Styled.Content>
           {(!isScreenMobile || isMobileFiltersVisable) && (
             <Sidebar
               isScreenMobile={isScreenMobile}
-              onFiltersClose={toggleMobileSidebar}
+              onMobileSidebarClose={toggleMobileSidebar}
               onCategoryClick={updateCategoryQuery}
-              activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
               onConditionClick={updateConditionQuery}
               onPriceChange={updatePriceQuery}
+              onSearchLabelClick={() => {
+                updateSearchQuery('');
+              }}
               activeFilters={filersQuery}
             />
           )}
