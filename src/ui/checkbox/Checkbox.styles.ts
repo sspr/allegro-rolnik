@@ -57,6 +57,7 @@ export const Label = styled.label`
     padding-left: 30px;
     cursor: pointer;
     margin: 6px 0;
+    min-height: 19px;
 
     &:hover ${Checkmark} {
       border: 2px solid ${color.text.grey};

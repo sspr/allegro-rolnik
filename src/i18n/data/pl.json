@@ -24,5 +24,8 @@
   "categories.sidecar": "Przyczepy",
   "categories.harvester": "Kombajny",
   "filters.filters": "Filtry",
-  "filters.condition": "Stan"
+  "filters.condition": "Stan",
+  "filters.price": "Cena",
+  "filters.minPrice": "od",
+  "filters.maxPrice": "do"
 }

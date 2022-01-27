@@ -9,13 +9,14 @@ export const Sidebar = ({
   onCategoryClick,
   activeCategory,
   onConditionClick,
+  onPriceChange,
   activeFilters,
 }: SidebarProps) => {
   return (
     <Styled.Sidebar>
       {isScreenMobile && <Styled.FiltersCardCloser onClick={onFiltersClose}>&#10005;</Styled.FiltersCardCloser>}
       <Categories onCategoryClick={onCategoryClick} activeCategory={activeCategory} />
-      <Filters onConditionClick={onConditionClick} activeFilters={activeFilters} />
+      <Filters onConditionClick={onConditionClick} onPriceChange={onPriceChange} activeFilters={activeFilters} />
     </Styled.Sidebar>
   );
 };

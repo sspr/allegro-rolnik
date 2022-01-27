@@ -54,8 +54,20 @@ export const App = () => {
     }
   };
 
+  const updatePriceQuery = (price: { minPrice?: number; maxPrice?: number }) => {
+    if (price.minPrice === 0) {
+      price.minPrice = undefined;
+    }
+    if (price.maxPrice === 0) {
+      price.maxPrice = undefined;
+    }
+    setQuery({ ...price, page: 1 });
+  };
+
   const filersQuery = {
     condition: validatedQuery?.condition,
+    minPrice: validatedQuery?.minPrice,
+    maxPrice: validatedQuery?.maxPrice,
   };
 
   const toggleMobileSidebar = () => {
@@ -74,6 +86,7 @@ export const App = () => {
               onCategoryClick={updateCategoryQuery}
               activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
               onConditionClick={updateConditionQuery}
+              onPriceChange={updatePriceQuery}
               activeFilters={filersQuery}
             />
           )}

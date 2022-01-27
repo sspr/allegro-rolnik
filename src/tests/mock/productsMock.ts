@@ -2,7 +2,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '10027784131',
     name: 'Ciągnik Farmtrac 675 DTn farmtrak farmtrack',
-    condition: 'Nowy',
+    condition: 'new',
     price: 118000,
     category: 'tractor',
     photo:
@@ -11,7 +11,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '10060320923',
     name: 'Przyczepa Rolnicza METAL-FACH 6 TON NOWA',
-    condition: 'Nowy',
+    condition: 'new',
     price: 34000,
     category: 'sidecar',
     photo: 'https://a.allegroimg.com/s360/11dc73/aa2c605241868a054d96752ca3ef/Przyczepa-Rolnicza-METAL-FACH-6-TON-NOWA',
@@ -19,7 +19,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '10071522451',
     name: 'Przyczepa Rolnicza T711 METAL-FACH Paletowa Nowa',
-    condition: 'Nowy',
+    condition: 'new',
     price: 46000,
     category: 'sidecar',
     photo:
@@ -28,7 +28,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '10071522540',
     name: 'Przyczepa Rolnicza 6T 8T Metal-Fach Najtaniej PL',
-    condition: 'Nowy',
+    condition: 'new',
     price: 28900,
     category: 'sidecar',
     photo:
@@ -37,7 +37,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '1012936714',
     name: 'Zaczep dolny ,rolniczy do Ursus.Zetor. Zoomlion.',
-    condition: 'Nowy',
+    condition: 'new',
     price: 450,
     category: 'tractor',
     photo: 'https://a.allegroimg.com/s360/1e03ca/013167ee42c48e614b974ccbb6b9',
@@ -45,7 +45,7 @@ export const PRODUCTS_MOCK = [
   {
     id: '1013138982',
     name: 'Kombajn  MASSEY FERGUSON',
-    condition: 'Używany',
+    condition: 'used',
     price: 27000,
     category: 'harvester',
     photo: 'https://a.allegroimg.com/s360/1ec474/e76e26764966a3b4f9b6abdae5a4',

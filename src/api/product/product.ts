@@ -6,11 +6,13 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   const searchParams = new URLSearchParams();
 
   for (const [key, value] of Object.entries(params)) {
-    Array.isArray(value)
-      ? value.forEach((element, index) => {
-          searchParams.append(`${key}[${index}]`, String(element));
-        })
-      : searchParams.append(key, String(value));
+    if (Array.isArray(value)) {
+      value.forEach((element, index) => {
+        searchParams.append(`${key}[${index}]`, String(element));
+      });
+    } else if (value) {
+      searchParams.append(key, String(value));
+    }
   }
 
   return `machines?${searchParams.toString()}`;
@@ -45,13 +47,9 @@ export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfi
     perPage: validatedPerPage,
     category: validatedCategory,
     condition: validatedCondition,
+    minPrice: validatedMinPrice,
+    maxPrice: validatedMaxPrice,
   };
-  if (validatedMinPrice) {
-    validatedQuery.minPrice = validatedMinPrice;
-  }
-  if (validatedMaxPrice) {
-    validatedQuery.maxPrice = validatedMaxPrice;
-  }
 
   return validatedQuery;
 };
