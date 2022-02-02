@@ -11,3 +11,9 @@ export type FiltersProps = {
     search: string | undefined;
   };
 };
+
+export type ActiveFliteredItem = {
+  value: undefined | string | number;
+  name: string | undefined;
+  onClick: VoidFunction;
+};

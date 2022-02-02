@@ -1,10 +1,11 @@
 import * as Styled from './Filters.styles';
-import { Condition } from './condition/Condition';
+import { ConditionsPanel } from './condition/ConditionsPanel';
 import { LabelWithButton } from 'ui';
 import { FiltersProps } from './Filters.types';
-import { Price } from './price/Price';
+import { PricePanel } from './pricePanel/PricePanel';
 import { useLocale } from 'hooks';
 import { FormatNumberOptions } from 'react-intl';
+import { generateActiveFilterItems } from './Filters.utils';
 
 export const Filters = ({ onConditionClick, onPriceChange, onSearchLabelClick, activeFilters }: FiltersProps) => {
   const { formatMessage, formatNumber } = useLocale();
@@ -15,61 +16,45 @@ export const Filters = ({ onConditionClick, onPriceChange, onSearchLabelClick, a
     maximumFractionDigits: 0,
   };
 
+  const { isAnyFilterApplied, activeFliteredItems } = generateActiveFilterItems({
+    onConditionClick,
+    onPriceChange,
+    onSearchLabelClick,
+    activeFilters,
+  });
+
   return (
     <>
-      {((activeFilters.condition && activeFilters.condition.length > 0) ||
-        activeFilters.minPrice ||
-        activeFilters.maxPrice ||
-        (activeFilters.search && activeFilters.search !== '')) && (
+      {isAnyFilterApplied && (
         <Styled.FiltersApplied>
-          {activeFilters.condition &&
-            activeFilters.condition.length > 0 &&
-            activeFilters.condition.map((condition) => (
-              <LabelWithButton
-                key={condition}
-                onClick={() => {
-                  onConditionClick(condition);
-                }}
-                text={formatMessage({ id: `singleProduct.condition.${condition}` })}
-              />
-            ))}
-          {activeFilters.minPrice && (
+          {activeFliteredItems.map((item) => (
             <LabelWithButton
-              onClick={() => {
-                onPriceChange({ minPrice: undefined });
-              }}
-              prefix={`${formatMessage({ id: `filters.price` }).toLowerCase()} ${formatMessage({
-                id: `filters.minPrice`,
-              })}`}
-              text={formatNumber(activeFilters.minPrice, currencyConfig)}
+              key={item.name ? item.name : item.value}
+              onClick={item.onClick}
+              text={
+                typeof item.value === 'number'
+                  ? formatNumber(item.value ? item.value : 0, currencyConfig)
+                  : String(item.value)
+              }
+              prefix={
+                item.name
+                  ? `${
+                      item.name === 'minPrice' || item.name === 'maxPrice'
+                        ? formatMessage({ id: `filters.price` }).toLowerCase()
+                        : ''
+                    } ${formatMessage({
+                      id: `filters.${item.name}`,
+                    })}`
+                  : undefined
+              }
             />
-          )}
-          {activeFilters.maxPrice && (
-            <LabelWithButton
-              onClick={() => {
-                onPriceChange({ maxPrice: undefined });
-              }}
-              prefix={`${formatMessage({ id: `filters.price` }).toLowerCase()} ${formatMessage({
-                id: `filters.maxPrice`,
-              })}`}
-              text={formatNumber(activeFilters.maxPrice, currencyConfig)}
-            />
-          )}
-          {activeFilters.search && activeFilters.search !== '' && (
-            <LabelWithButton
-              onClick={() => {
-                onSearchLabelClick();
-              }}
-              prefix={formatMessage({ id: `filters.search` })}
-              text={activeFilters.search}
-            />
-          )}
+          ))}
         </Styled.FiltersApplied>
       )}
       <Styled.Filters>
         <h2>{formatMessage({ id: 'filters.filters' })}</h2>
-        <Condition onCheckboxClick={onConditionClick} activeCheckbox={activeFilters.condition} />
-        <Price onInputChange={onPriceChange} minPrice={activeFilters.minPrice} maxPrice={activeFilters.maxPrice} />
+        <ConditionsPanel onConditionChange={onConditionClick} activeConditions={activeFilters.condition} />
+        <PricePanel onInputChange={onPriceChange} minPrice={activeFilters.minPrice} maxPrice={activeFilters.maxPrice} />
       </Styled.Filters>
     </>
   );

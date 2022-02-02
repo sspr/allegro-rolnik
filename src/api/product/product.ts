@@ -6,12 +6,12 @@ export const createGetProductsUrl = (params: GetProductsUrlParams): string => {
   const searchParams = new URLSearchParams();
 
   for (const [key, value] of Object.entries(params)) {
-    if (Array.isArray(value)) {
-      value.forEach((element, index) => {
-        searchParams.append(`${key}[${index}]`, String(element));
-      });
-    } else if (value) {
-      searchParams.append(key, String(value));
+    if (value) {
+      Array.isArray(value)
+        ? value.forEach((element, index) => {
+            searchParams.append(`${key}[${index}]`, String(element));
+          })
+        : searchParams.append(key, String(value));
     }
   }
 
