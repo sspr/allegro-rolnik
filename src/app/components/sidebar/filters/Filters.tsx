@@ -1,5 +1,6 @@
 import * as Styled from './Filters.styles';
-import { Condition } from './condition/Condition';
+import { useIntl } from 'react-intl';
+import { ConditionsPanel } from './condition/ConditionsPanel';
 import { LabelWithButton } from 'ui';
 import { FiltersProps, ActiveFliterItem } from './Filters.types';
 import { PricePanel } from './pricePanel/PricePanel';
@@ -64,7 +65,7 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
       )}
       <Styled.Filters>
         <h2>{formatMessage({ id: 'filters.filters' })}</h2>
-        <Condition onCheckboxClick={onConditionClick} activeCheckbox={activeFilters.condition} />
+        <ConditionsPanel onConditionChange={onConditionClick} activeConditions={activeFilters.condition} />
         <PricePanel onInputChange={onPriceChange} minPrice={activeFilters.minPrice} maxPrice={activeFilters.maxPrice} />
       </Styled.Filters>
     </>

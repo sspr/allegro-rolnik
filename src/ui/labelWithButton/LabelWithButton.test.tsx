@@ -13,7 +13,7 @@ describe('LabelWithButton component', () => {
 
   const mockFn = jest.fn();
 
-  it('renders clickable button', () => {
+  it('handles clicks correctly', () => {
     const { getByText, getByRole } = render(<LabelWithButton text={'new'} prefix={'condtion'} onClick={mockFn} />);
 
     getByText('new').click();
