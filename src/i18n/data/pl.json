@@ -8,7 +8,10 @@
   "main.filterSwitch": "filtry i kategorie",
   "productsList.loadingData": "Ładowanie produktów...",
   "productsList.errorMessage": "Coś poszło nie tak, prosimy spróbować później.",
+  "productsList.noProducts": "Nie znaleziono produktów o wybranych kryteriach. Proszę zmienić kryteria wyszukiwania.",
   "singleProduct.condition": "stan",
+  "singleProduct.condition.new": "nowy",
+  "singleProduct.condition.used": "używany",
   "pagination.previous": "poprzedni",
   "pagination.next": "następny",
   "pagination.of": "z",
@@ -19,5 +22,8 @@
   "categories.allMachines": "wszystkie maszyny",
   "categories.tractor": "Traktory",
   "categories.sidecar": "Przyczepy",
-  "categories.harvester": "Kombajny"
+  "categories.harvester": "Kombajny",
+  "filters.filters": "Filtry",
+  "filters.condition": "Stan",
+  "labelWithButton.close": "przycisk zamykający"
 }

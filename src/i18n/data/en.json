@@ -8,7 +8,10 @@
   "main.filterSwitch": "filters and categories",
   "productsList.loadingData": "Loading products...",
   "productsList.errorMessage": "Something went wrong. Please try agin later.",
+  "productsList.noProducts": "Products with declared filters not fount. Please try to use another filters.",
   "singleProduct.condition": "condition",
+  "singleProduct.condition.new": "new",
+  "singleProduct.condition.used": "used",
   "pagination.previous": "previous",
   "pagination.next": "next",
   "pagination.of": "of",
@@ -19,5 +22,8 @@
   "categories.allMachines": "all machines",
   "categories.tractor": "Tractors",
   "categories.sidecar": "Sidecars",
-  "categories.harvester": "Harvesters"
+  "categories.harvester": "Harvesters",
+  "filters.filters": "Filters",
+  "filters.condition": "Condition",
+  "labelWithButton.close": "close button"
 }

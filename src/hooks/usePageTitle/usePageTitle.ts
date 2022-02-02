@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 
 export const usePageTitle = () => {
   const { formatMessage } = useIntl();
+
   useEffect(() => {
     const translatedPageTitle = formatMessage({ id: 'page.title' });
     if (document.title !== translatedPageTitle) {

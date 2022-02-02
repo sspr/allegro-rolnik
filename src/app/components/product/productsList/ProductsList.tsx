@@ -17,6 +17,9 @@ export const ProductsList = ({ productsList, isLoading, isError }: ProductsListP
         </Styled.ProductsList>
       )}
       {isError && <Styled.Message>{formatMessage({ id: 'productsList.errorMessage' })}</Styled.Message>}
+      {productsList && productsList?.length === 0 && !isError && (
+        <Styled.Message>{formatMessage({ id: 'productsList.noProducts' })}</Styled.Message>
+      )}
     </>
   );
 };
