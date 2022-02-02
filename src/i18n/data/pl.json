@@ -24,5 +24,6 @@
   "categories.sidecar": "Przyczepy",
   "categories.harvester": "Kombajny",
   "filters.filters": "Filtry",
-  "filters.condition": "Stan"
+  "filters.condition": "Stan",
+  "labelWithButton.close": "przycisk zamykający"
 }
