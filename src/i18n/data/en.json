@@ -28,4 +28,5 @@
   "filters.price": "Price",
   "filters.minPrice": "from",
   "filters.maxPrice": "to"
+  "labelWithButton.close": "close button"
 }
