@@ -1,6 +1,6 @@
 import * as Styled from './Filters.styles';
 import { useIntl } from 'react-intl';
-import { Condition } from './condition/Condition';
+import { ConditionsPanel } from './condition/ConditionsPanel';
 import { LabelWithButton } from 'ui';
 import { FiltersProps } from './Filters.types';
 
@@ -23,7 +23,7 @@ export const Filters = ({ onConditionClick, activeFilters }: FiltersProps) => {
       )}
       <Styled.Filters>
         <h2>{formatMessage({ id: 'filters.filters' })}</h2>
-        <Condition onCheckboxClick={onConditionClick} activeCheckbox={activeFilters.condition} />
+        <ConditionsPanel onConditionChange={onConditionClick} activeConditions={activeFilters.condition} />
       </Styled.Filters>
     </>
   );

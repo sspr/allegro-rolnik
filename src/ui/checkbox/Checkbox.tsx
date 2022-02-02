@@ -1,7 +1,7 @@
 import * as Styled from './Checkbox.styles';
 import { CheckboxProps } from './Checkbox.types';
 
-export const Checkbox = (props: React.ComponentPropsWithoutRef<'input'> & CheckboxProps) => (
+export const Checkbox = (props: CheckboxProps) => (
   <Styled.Label htmlFor={props.label}>
     {props.label}
     <Styled.Input type="checkbox" id={props.label} name={props.label} {...props} />
