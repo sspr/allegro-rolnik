@@ -9,3 +9,10 @@ export type FiltersProps = {
     maxPrice: number | undefined;
   };
 };
+
+export type ActiveFliterItem = {
+  value: undefined | string | number;
+  prefix?: string;
+  text: string;
+  onClick: VoidFunction;
+};

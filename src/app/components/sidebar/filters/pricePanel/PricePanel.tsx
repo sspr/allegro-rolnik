@@ -1,14 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useDebounceState } from 'hooks';
+import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
-import { Checkbox, RangeInput } from 'ui';
-import * as Styled from './Price.styles';
-import { PriceProps } from './Price.type';
+import { Checkbox } from 'ui';
+import { RangeInput } from '../rangeInput/RangeInput';
+import * as Styled from './PricePanel.styles';
+import { PricePanelProps } from './PricePanel.type';
 
-export const Price = ({ onInputChange, minPrice, maxPrice }: PriceProps) => {
+export const PricePanel = ({ onInputChange, minPrice, maxPrice }: PricePanelProps) => {
   const { formatMessage } = useIntl();
 
-  const [minPriceState, setMinPriceState] = useState(minPrice);
-  const [maxPriceState, setMaxPriceState] = useState(maxPrice);
+  const [minPriceState, setMinPriceState] = useDebounceState({
+    onDebounceChange: (value) => onInputChange({ minPrice: value }),
+    initialValue: minPrice,
+    debounceTime: 1000,
+  });
+  const [maxPriceState, setMaxPriceState] = useDebounceState({
+    onDebounceChange: (value) => onInputChange({ maxPrice: value }),
+    initialValue: maxPrice,
+    debounceTime: 1000,
+  });
 
   useEffect(() => {
     if (!minPrice) {
@@ -22,29 +32,16 @@ export const Price = ({ onInputChange, minPrice, maxPrice }: PriceProps) => {
     }
   }, [maxPrice]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => onInputChange({ minPrice: minPriceState }), 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [minPriceState]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => onInputChange({ maxPrice: maxPriceState }), 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [maxPriceState]);
-
   return (
     <>
       <h3>{formatMessage({ id: 'filters.price' })}</h3>
-      <Styled.Price>
+      <Styled.PricePanel>
         {(minPrice || maxPrice) && (
           <Checkbox
             data-testid="checkbox"
-            isChecked={minPrice || maxPrice ? true : false}
+            isChecked={true}
             label=""
+            name="priceRangeCheckbox"
             onClick={() => {
               onInputChange({ minPrice: undefined });
               onInputChange({ maxPrice: undefined });
@@ -54,6 +51,7 @@ export const Price = ({ onInputChange, minPrice, maxPrice }: PriceProps) => {
           />
         )}
         <RangeInput
+          data-testid="inputMinPrice"
           onChange={(event) => {
             setMinPriceState(Number(event.target.value));
           }}
@@ -72,7 +70,7 @@ export const Price = ({ onInputChange, minPrice, maxPrice }: PriceProps) => {
           label={formatMessage({ id: 'filters.maxPrice' })}
           value={maxPriceState ? maxPriceState : ''}
         />
-      </Styled.Price>
+      </Styled.PricePanel>
     </>
   );
 };

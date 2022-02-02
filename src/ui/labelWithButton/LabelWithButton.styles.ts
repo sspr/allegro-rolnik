@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LabelWithButton = styled.span`
+export const LabelWithButton = styled.div`
   border: 1px solid ${({ theme }) => theme.color.border.grey};
   display: flex;
   flex-direction: row-reverse;
