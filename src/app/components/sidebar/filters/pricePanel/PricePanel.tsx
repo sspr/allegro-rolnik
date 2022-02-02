@@ -9,12 +9,12 @@ import { PricePanelProps } from './PricePanel.type';
 export const PricePanel = ({ onInputChange, minPrice, maxPrice }: PricePanelProps) => {
   const { formatMessage } = useIntl();
 
-  const [minPriceState, setMinPriceState] = useDebounceState({
+  const [minPriceState, setMinPriceState] = useDebounceState<number>({
     onDebounceChange: (value) => onInputChange({ minPrice: value }),
     initialValue: minPrice,
     debounceTime: 1000,
   });
-  const [maxPriceState, setMaxPriceState] = useDebounceState({
+  const [maxPriceState, setMaxPriceState] = useDebounceState<number>({
     onDebounceChange: (value) => onInputChange({ maxPrice: value }),
     initialValue: maxPrice,
     debounceTime: 1000,

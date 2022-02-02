@@ -1,11 +1,11 @@
 import * as Styled from './Filters.styles';
-import { useIntl } from 'react-intl';
 import { ConditionsPanel } from './condition/ConditionsPanel';
 import { LabelWithButton } from 'ui';
-import { FiltersProps, ActiveFliterItem } from './Filters.types';
+import { FiltersProps } from './Filters.types';
 import { PricePanel } from './pricePanel/PricePanel';
 import { useLocale } from 'hooks';
 import { FormatNumberOptions } from 'react-intl';
+import { generateActiveFilterItems } from './Filters.utils';
 
 export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: FiltersProps) => {
   const { formatMessage, formatNumber } = useLocale();
@@ -16,51 +16,34 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
     maximumFractionDigits: 0,
   };
 
-  const isAnyFilterApplied =
-    (activeFilters.condition && activeFilters.condition.length > 0) || activeFilters.minPrice || activeFilters.maxPrice;
-
-  const activeFliterItems: ActiveFliterItem[] = [];
-
-  activeFilters.condition?.forEach((condition) => {
-    activeFliterItems.push({
-      value: condition,
-      text: condition,
-      onClick: () => {
-        onConditionClick(condition);
-      },
-    });
-  });
-
-  [
-    { name: 'minPrice', value: activeFilters.minPrice },
-    { name: 'maxPrice', value: activeFilters.maxPrice },
-  ].forEach((price) => {
-    activeFliterItems.push({
-      value: price.value,
-      prefix: `${formatMessage({ id: `filters.price` }).toLowerCase()} ${formatMessage({
-        id: `filters.${price.name}`,
-      })}`,
-      text: formatNumber(price.value ? price.value : 0, currencyConfig),
-      onClick: () => {
-        onPriceChange(price.name === 'minPrice' ? { minPrice: undefined } : { maxPrice: undefined });
-      },
-    });
+  const { isAnyFilterApplied, activeFliteredItems } = generateActiveFilterItems({
+    onConditionClick,
+    onPriceChange,
+    activeFilters,
   });
 
   return (
     <>
       {isAnyFilterApplied && (
         <Styled.FiltersApplied>
-          {activeFliterItems.map((item) =>
-            item.value ? (
-              <LabelWithButton
-                key={item.prefix ? item.prefix : item.text}
-                onClick={item.onClick}
-                text={item.text}
-                prefix={item.prefix}
-              />
-            ) : null,
-          )}
+          {activeFliteredItems.map((item) => (
+            <LabelWithButton
+              key={item.name ? item.name : item.value}
+              onClick={item.onClick}
+              text={
+                typeof item.value === 'number'
+                  ? formatNumber(item.value ? item.value : 0, currencyConfig)
+                  : String(item.value)
+              }
+              prefix={
+                item.name
+                  ? `${formatMessage({ id: `filters.price` }).toLowerCase()} ${formatMessage({
+                      id: `filters.${item.name}`,
+                    })}`
+                  : undefined
+              }
+            />
+          ))}
         </Styled.FiltersApplied>
       )}
       <Styled.Filters>

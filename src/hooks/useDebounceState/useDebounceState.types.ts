@@ -1,10 +1,10 @@
-export type UseDebounceStateProps = {
-  onDebounceChange: (value: number | undefined) => void;
-  initialValue: number | undefined;
+export type UseDebounceStateProps<TInitialValue> = {
+  onDebounceChange: (value: TInitialValue | undefined) => void;
+  initialValue: TInitialValue | undefined;
   debounceTime: number;
 };
 
-export type UseDebounceStateReturnedValue = [
-  number | undefined,
-  React.Dispatch<React.SetStateAction<number | undefined>>,
+export type UseDebounceStateReturnedValue<TInitialValue> = [
+  TInitialValue | undefined,
+  React.Dispatch<React.SetStateAction<TInitialValue | undefined>>,
 ];

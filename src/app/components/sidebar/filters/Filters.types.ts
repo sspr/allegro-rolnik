@@ -10,9 +10,8 @@ export type FiltersProps = {
   };
 };
 
-export type ActiveFliterItem = {
+export type ActiveFliteredItem = {
   value: undefined | string | number;
-  prefix?: string;
-  text: string;
+  name: string | undefined;
   onClick: VoidFunction;
 };

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { UseDebounceStateProps, UseDebounceStateReturnedValue } from './useDebounceState.types';
 
-export const useDebounceState = ({
+export const useDebounceState = <TInitialValue>({
   onDebounceChange,
   initialValue,
   debounceTime,
-}: UseDebounceStateProps): UseDebounceStateReturnedValue => {
-  const [state, setState] = useState<number | undefined>(initialValue);
+}: UseDebounceStateProps<TInitialValue>): UseDebounceStateReturnedValue<TInitialValue> => {
+  const [state, setState] = useState<TInitialValue | undefined>(initialValue);
 
   useEffect(() => {
     const timer = setTimeout(() => onDebounceChange(state), debounceTime);
