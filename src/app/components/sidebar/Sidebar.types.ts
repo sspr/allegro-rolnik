@@ -6,5 +6,10 @@ export type SidebarProps = {
   onCategoryClick: (category: ProductCategory) => void;
   activeCategory: ProductCategory | undefined;
   onConditionClick: (condition: ProductCondition) => void;
-  activeFilters: { condition?: ProductCondition[] };
+  onPriceChange: (price: { minPrice?: number; maxPrice?: number }) => void;
+  activeFilters: {
+    condition?: ProductCondition[];
+    minPrice: number | undefined;
+    maxPrice: number | undefined;
+  };
 };

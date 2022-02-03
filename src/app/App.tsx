@@ -8,7 +8,7 @@ import { Sidebar } from './components/sidebar/Sidebar';
 export const App = () => {
   usePageTitle();
 
-  const { validatedQuery, filersQuery, updatePageQuery, updateCategoryQuery, updateConditionQuery } =
+  const { validatedQuery, filersQuery, updatePageQuery, updateCategoryQuery, updateConditionQuery, updatePriceQuery } =
     useQueryParameters();
 
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
@@ -30,6 +30,7 @@ export const App = () => {
               onCategoryClick={updateCategoryQuery}
               activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
               onConditionClick={updateConditionQuery}
+              onPriceChange={updatePriceQuery}
               activeFilters={filersQuery}
             />
           )}

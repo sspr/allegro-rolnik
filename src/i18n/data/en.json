@@ -8,7 +8,7 @@
   "main.filterSwitch": "filters and categories",
   "productsList.loadingData": "Loading products...",
   "productsList.errorMessage": "Something went wrong. Please try agin later.",
-  "productsList.noProducts": "Products with declared filters not fount. Please try to use another filters.",
+  "productsList.noProducts": "Products with declared filters not found. Please try to use another filters.",
   "singleProduct.condition": "condition",
   "singleProduct.condition.new": "new",
   "singleProduct.condition.used": "used",
@@ -25,5 +25,8 @@
   "categories.harvester": "Harvesters",
   "filters.filters": "Filters",
   "filters.condition": "Condition",
+  "filters.price": "Price",
+  "filters.minPrice": "from",
+  "filters.maxPrice": "to"
   "labelWithButton.close": "close button"
 }

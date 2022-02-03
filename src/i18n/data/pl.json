@@ -25,5 +25,8 @@
   "categories.harvester": "Kombajny",
   "filters.filters": "Filtry",
   "filters.condition": "Stan",
+  "filters.price": "Cena",
+  "filters.minPrice": "od",
+  "filters.maxPrice": "do"
   "labelWithButton.close": "przycisk zamykający"
 }

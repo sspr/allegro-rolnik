@@ -47,8 +47,8 @@ export const validateProductsUrlParams = (query: DecodedValueMap<QueryParamConfi
     perPage: validatedPerPage,
     category: validatedCategory,
     condition: validatedCondition,
-    minPrice: validatedMinPrice ? validatedMinPrice : undefined,
-    maxPrice: validatedMaxPrice ? validatedMaxPrice : undefined,
+    minPrice: validatedMinPrice,
+    maxPrice: validatedMaxPrice,
   };
 
   return validatedQuery;

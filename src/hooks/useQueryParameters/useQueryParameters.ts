@@ -44,8 +44,20 @@ export const useQueryParameters = () => {
     }
   };
 
+  const updatePriceQuery = (price: { minPrice?: number; maxPrice?: number }) => {
+    if (price.minPrice === 0) {
+      price.minPrice = undefined;
+    }
+    if (price.maxPrice === 0) {
+      price.maxPrice = undefined;
+    }
+    setQuery({ ...price, page: 1 });
+  };
+
   const filersQuery = {
     condition: validatedQuery?.condition,
+    minPrice: validatedQuery?.minPrice,
+    maxPrice: validatedQuery?.maxPrice,
   };
 
   return {
@@ -54,5 +66,6 @@ export const useQueryParameters = () => {
     updatePageQuery,
     updateCategoryQuery,
     updateConditionQuery,
+    updatePriceQuery,
   };
 };
