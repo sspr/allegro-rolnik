@@ -27,6 +27,6 @@
   "filters.condition": "Stan",
   "filters.price": "Cena",
   "filters.minPrice": "od",
-  "filters.maxPrice": "do"
+  "filters.maxPrice": "do",
   "labelWithButton.close": "przycisk zamykający"
 }
