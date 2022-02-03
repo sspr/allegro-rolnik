@@ -32,4 +32,5 @@ export type GetProductsUrlParams = {
   condition?: ProductCondition[];
   minPrice?: number;
   maxPrice?: number;
+  search?: string;
 };

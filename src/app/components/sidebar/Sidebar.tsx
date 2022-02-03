@@ -5,18 +5,25 @@ import { SidebarProps } from './Sidebar.types';
 
 export const Sidebar = ({
   isScreenMobile,
-  onFiltersClose,
+  onMobileSidebarClose,
   onCategoryClick,
-  activeCategory,
   onConditionClick,
   onPriceChange,
+  onSearchLabelClick,
   activeFilters,
 }: SidebarProps) => {
   return (
     <Styled.Sidebar>
-      {isScreenMobile && <Styled.FiltersCardCloser onClick={onFiltersClose}>&#10005;</Styled.FiltersCardCloser>}
-      <Categories onCategoryClick={onCategoryClick} activeCategory={activeCategory} />
-      <Filters onConditionClick={onConditionClick} onPriceChange={onPriceChange} activeFilters={activeFilters} />
+      {isScreenMobile && (
+        <Styled.MobileSidebarCloser onClick={onMobileSidebarClose}>&#10005;</Styled.MobileSidebarCloser>
+      )}
+      <Categories onCategoryClick={onCategoryClick} activeCategory={activeFilters.category} />
+      <Filters
+        onConditionClick={onConditionClick}
+        onPriceChange={onPriceChange}
+        activeFilters={activeFilters}
+        onSearchLabelClick={onSearchLabelClick}
+      />
     </Styled.Sidebar>
   );
 };

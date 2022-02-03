@@ -7,7 +7,7 @@ import { useLocale } from 'hooks';
 import { FormatNumberOptions } from 'react-intl';
 import { generateActiveFilterItems } from './Filters.utils';
 
-export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: FiltersProps) => {
+export const Filters = ({ onConditionClick, onPriceChange, onSearchLabelClick, activeFilters }: FiltersProps) => {
   const { formatMessage, formatNumber } = useLocale();
 
   const currencyConfig: FormatNumberOptions = {
@@ -19,6 +19,7 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
   const { isAnyFilterApplied, activeFliteredItems } = generateActiveFilterItems({
     onConditionClick,
     onPriceChange,
+    onSearchLabelClick,
     activeFilters,
   });
 
@@ -37,7 +38,11 @@ export const Filters = ({ onConditionClick, onPriceChange, activeFilters }: Filt
               }
               prefix={
                 item.name
-                  ? `${formatMessage({ id: `filters.price` }).toLowerCase()} ${formatMessage({
+                  ? `${
+                      item.name === 'minPrice' || item.name === 'maxPrice'
+                        ? formatMessage({ id: `filters.price` }).toLowerCase()
+                        : ''
+                    } ${formatMessage({
                       id: `filters.${item.name}`,
                     })}`
                   : undefined

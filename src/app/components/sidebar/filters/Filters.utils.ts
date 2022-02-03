@@ -1,8 +1,16 @@
 import { ActiveFliteredItem, FiltersProps } from './Filters.types';
 
-export const generateActiveFilterItems = ({ onConditionClick, onPriceChange, activeFilters }: FiltersProps) => {
+export const generateActiveFilterItems = ({
+  onConditionClick,
+  onPriceChange,
+  onSearchLabelClick,
+  activeFilters,
+}: FiltersProps) => {
   const isAnyFilterApplied =
-    (activeFilters.condition && activeFilters.condition.length > 0) || activeFilters.minPrice || activeFilters.maxPrice;
+    (activeFilters.condition && activeFilters.condition.length > 0) ||
+    activeFilters.minPrice ||
+    activeFilters.maxPrice ||
+    (activeFilters.search !== undefined && activeFilters.search !== '');
 
   const conditionFilters = activeFilters.condition
     ? activeFilters.condition?.map((condition) => {
@@ -33,7 +41,9 @@ export const generateActiveFilterItems = ({ onConditionClick, onPriceChange, act
     },
   ];
 
-  const activeFliteredItems: ActiveFliteredItem[] = [...conditionFilters, ...priceFilters].filter(
+  const searchFilter = [{ name: 'search', value: activeFilters.search, onClick: onSearchLabelClick }];
+
+  const activeFliteredItems: ActiveFliteredItem[] = [...conditionFilters, ...priceFilters, ...searchFilter].filter(
     (filter) => filter.value,
   );
 

@@ -3,6 +3,7 @@ import { LabelWithCount } from 'ui';
 import * as Styled from './Categories.styles';
 import { CategoriesProps } from './Categories.types';
 import { ProductCategory } from 'api/product/product.types';
+import { CATEGORY_MOCK } from 'tests/mock/categoriesMock';
 
 export const Categories = ({ onCategoryClick, activeCategory }: CategoriesProps) => {
   const { formatMessage } = useIntl();
@@ -22,8 +23,8 @@ export const Categories = ({ onCategoryClick, activeCategory }: CategoriesProps)
           </Styled.GoBackButton>
         </Styled.GoBack>
       )}
-      {Object.values(ProductCategory).map((category) => (
-        <LabelWithCount count={56} key={category}>
+      {Object.values(ProductCategory).map((category, index) => (
+        <LabelWithCount count={CATEGORY_MOCK[index].count} key={category}>
           <Styled.SingleCategoryName
             className={activeCategory === category ? 'active' : ''}
             onClick={() => {

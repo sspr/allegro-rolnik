@@ -8,8 +8,15 @@ import { Sidebar } from './components/sidebar/Sidebar';
 export const App = () => {
   usePageTitle();
 
-  const { validatedQuery, filersQuery, updatePageQuery, updateCategoryQuery, updateConditionQuery, updatePriceQuery } =
-    useQueryParameters();
+  const {
+    validatedQuery,
+    filersQuery,
+    updatePageQuery,
+    updateCategoryQuery,
+    updateConditionQuery,
+    updatePriceQuery,
+    updateSearchQuery,
+  } = useQueryParameters();
 
   const [isMobileFiltersVisable, setIsMobileFiltersVisable] = useState<boolean>(false);
   const isScreenMobile = useIsScreenMobile();
@@ -20,17 +27,19 @@ export const App = () => {
 
   return (
     <>
-      <Header />
+      <Header initialSearch={validatedQuery.search ? validatedQuery.search : ''} onSubmit={updateSearchQuery} />
       <Styled.Wrapper>
         <Styled.Content>
           {(!isScreenMobile || isMobileFiltersVisable) && (
             <Sidebar
               isScreenMobile={isScreenMobile}
-              onFiltersClose={toggleMobileSidebar}
+              onMobileSidebarClose={toggleMobileSidebar}
               onCategoryClick={updateCategoryQuery}
-              activeCategory={validatedQuery.category ? validatedQuery.category[0] : undefined}
               onConditionClick={updateConditionQuery}
               onPriceChange={updatePriceQuery}
+              onSearchLabelClick={() => {
+                updateSearchQuery('');
+              }}
               activeFilters={filersQuery}
             />
           )}
