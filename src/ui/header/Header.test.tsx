@@ -6,28 +6,28 @@ import { AssertionError } from 'assert';
 
 describe('Header component', () => {
   it('renders language buttons correctly', () => {
-    const { getByText } = render(<Header inputValue="" onSubmit={() => {}} />);
+    const { getByText } = render(<Header initialSearch="" onSubmit={() => {}} />);
 
     expect(getByText(AppLocale.en)).toBeInTheDocument();
     expect(getByText(AppLocale.pl)).toBeInTheDocument();
   });
 
   it('has default active language button that is bold', () => {
-    const { getByText } = render(<Header inputValue="" onSubmit={() => {}} />);
+    const { getByText } = render(<Header initialSearch="" onSubmit={() => {}} />);
 
     expect(getByText(AppLocale.en)).toHaveClass('active');
     expect(getByText(AppLocale.en)).toHaveStyle('font-weight: 600');
   });
 
   it('has inactive language button that is not bold', () => {
-    const { getByText } = render(<Header inputValue="" onSubmit={() => {}} />);
+    const { getByText } = render(<Header initialSearch="" onSubmit={() => {}} />);
 
     expect(getByText(AppLocale.pl)).toHaveClass('not-active');
     expect(getByText(AppLocale.pl)).not.toHaveStyle('font-weight: 600');
   });
 
   it('changes language when language button, that is not actvie, is clicked', () => {
-    const { getByText, getAllByRole } = render(<Header inputValue="" onSubmit={() => {}} />);
+    const { getByText, getAllByRole } = render(<Header initialSearch="" onSubmit={() => {}} />);
 
     getByText(AppLocale.pl).click();
 
@@ -36,7 +36,7 @@ describe('Header component', () => {
   });
 
   it('displays input value', () => {
-    const { getByPlaceholderText } = render(<Header inputValue="sidecar 3,5t" onSubmit={() => {}} />);
+    const { getByPlaceholderText } = render(<Header initialSearch="sidecar 3,5t" onSubmit={() => {}} />);
     const input = getByPlaceholderText(translations[AppLocale.en]['header.searchInputPlaceholder']);
 
     if (!(input instanceof HTMLInputElement)) {

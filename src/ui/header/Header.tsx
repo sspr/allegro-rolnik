@@ -8,14 +8,16 @@ import { useLocale } from 'hooks';
 import { HeaderProps } from './Header.types';
 import { useEffect, useState } from 'react';
 
-export const Header = ({ inputValue, onSubmit }: HeaderProps) => {
+export const Header = ({ initialSearch, onSubmit }: HeaderProps) => {
   const appLocaleValues = Object.values<AppLocale>(AppLocale);
   const { formatMessage, setLocale, locale } = useLocale();
-  const [inputValueState, setInputValueState] = useState(inputValue);
+  const [inputValueState, setInputValueState] = useState(initialSearch);
 
   useEffect(() => {
-    setInputValueState(inputValue);
-  }, [inputValue]);
+    if (initialSearch !== inputValueState) {
+      setInputValueState(initialSearch);
+    }
+  }, [initialSearch]);
 
   return (
     <Styled.HeaderWrapper>

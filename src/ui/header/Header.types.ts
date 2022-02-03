@@ -1,4 +1,4 @@
 export type HeaderProps = {
-  inputValue: string;
+  initialSearch: string;
   onSubmit: (searchTerm: string) => void;
 };

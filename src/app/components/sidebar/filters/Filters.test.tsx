@@ -51,6 +51,7 @@ describe('Filters component', () => {
 
     getAllByText('new')[0].closest('div')?.querySelector('button')?.click();
     getAllByText('used')[0].closest('div')?.querySelector('button')?.click();
+    getByText('price to:').closest('div')?.querySelector('button')?.click();
     getByText('looking for:').closest('div')?.querySelector('button')?.click();
 
     expect(mockFnOnConditionClick).toHaveBeenCalledTimes(2);

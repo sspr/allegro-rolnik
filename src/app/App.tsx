@@ -27,7 +27,7 @@ export const App = () => {
 
   return (
     <>
-      <Header inputValue={validatedQuery.search ? validatedQuery.search : ''} onSubmit={updateSearchQuery} />
+      <Header initialSearch={validatedQuery.search ? validatedQuery.search : ''} onSubmit={updateSearchQuery} />
       <Styled.Wrapper>
         <Styled.Content>
           {(!isScreenMobile || isMobileFiltersVisable) && (
