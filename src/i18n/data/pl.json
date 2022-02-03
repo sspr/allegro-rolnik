@@ -28,5 +28,6 @@
   "filters.price": "Cena",
   "filters.minPrice": "od",
   "filters.maxPrice": "do",
-  "filters.search": "szukasz"
+  "filters.search": "szukasz",
+  "labelWithButton.close": "przycisk zamykający"
 }

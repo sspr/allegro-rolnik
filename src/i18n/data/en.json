@@ -28,5 +28,6 @@
   "filters.price": "Price",
   "filters.minPrice": "from",
   "filters.maxPrice": "to",
-  "filters.search": "looking for"
+  "filters.search": "looking for",
+  "labelWithButton.close": "close button"
 }
